@@ -14,7 +14,6 @@
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input-text' %>
         </div>
       </div>
-
       <div class="flex justify-between gap-4">
         <div class="w-full">
           <%= f.label :first_name, class: 'input-label' %>
@@ -22,7 +21,6 @@
             <%= f.text_field :first_name, autocomplete: "first-name", class: 'input-text' %>
           </div>
         </div>
-
         <div class="w-full">
           <%= f.label :last_name, class: 'input-label' %>
           <div class="mt-2">
@@ -30,23 +28,20 @@
           </div>
         </div>
       </div>
-
       <div>
         <%= f.label :password, class: 'input-label' %>
         <div class="mt-2">
           <%= f.password_field :password, autocomplete: "new-password", class: 'input-text' %>
         </div>
       </div>
-
       <div>
         <%= f.label :password_confirmation, class: 'input-label' %>
         <div class="mt-2">
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input-text' %>
         </div>
       </div>
-
       <div>
-        <%= f.submit "Sign up", class: 'btn btn-primary w-full' %>
+        <%= f.submit "Sign up", class: 'btn btn-primary w-full h-12' %>
       </div>
     <% end %>
     <div class="flex justify-center gap-2 mt-6">
