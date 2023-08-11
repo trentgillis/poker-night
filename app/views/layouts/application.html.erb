@@ -10,60 +10,7 @@
   <%= javascript_importmap_tags %>
 </head>
 <body class="min-h-screen bg-slate-50">
-<nav class="bg-neutral-900 mb-4 px-8 xl:px-0" data-controller="navbar">
-  <div class="h-16 mx-auto max-w-screen-xl flex items-center justify-between">
-    <%= link_to root_path do %>
-      <div class="flex gap-2 items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="h-5 w-5 fill-teal-500" viewBox="0 0 16 16">
-          <path d="M8 0a.5.5 0 0 1 .429.243c1.359 2.265 2.925 3.682 4.25 4.882.096.086.19.17.282.255C14.308 6.604 15.5 7.747 15.5 9.5a4 4 0 0 1-5.406 3.746c.235.39.491.782.722 1.131.434.659-.01 1.623-.856 1.623H6.04c-.845 0-1.29-.964-.856-1.623.263-.397.51-.777.728-1.134A4 4 0 0 1 .5 9.5c0-1.753 1.192-2.896 2.539-4.12l.281-.255c1.326-1.2 2.892-2.617 4.251-4.882A.5.5 0 0 1 8 0zM3.711 6.12C2.308 7.396 1.5 8.253 1.5 9.5a3 3 0 0 0 5.275 1.956.5.5 0 0 1 .868.43c-.094.438-.33.932-.611 1.428a29.247 29.247 0 0 1-1.013 1.614.03.03 0 0 0-.005.018.074.074 0 0 0 .024.054h3.924a.074.074 0 0 0 .024-.054.03.03 0 0 0-.005-.018c-.3-.455-.658-1.005-.96-1.535-.294-.514-.57-1.064-.664-1.507a.5.5 0 0 1 .868-.43A3 3 0 0 0 14.5 9.5c0-1.247-.808-2.104-2.211-3.38L12 5.86c-1.196-1.084-2.668-2.416-4-4.424-1.332 2.008-2.804 3.34-4 4.422l-.289.261z"/>
-        </svg>
-        <h1 class="text-white font-semibold tracking-wider text-md font-quicksand">Phil&apos;s Poker Room</h1>
-      </div>
-    <% end %>
-    <div class="relative transition-opacity">
-      <button class="btn p-2" data-navbar-target="userMenuBtn" data-action="click->navbar#toggle">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-white">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"/>
-        </svg>
-      </button>
-      <div
-        data-navbar-target="userMenu"
-        class="hidden absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-        data-transition-enter-active="transition ease-out duration-100"
-        data-transition-enter-from="transform opacity-0 scale-95"
-        data-transition-enter-to="transform opacity-100 scale-100"
-        data-transition-leave-active="transition ease-in duration-75"
-        data-transition-leave-from="transform opacity-100 scale-100"
-        data-transition-leave-to="transform opacity-0 scale-95"
-        role="menu"
-      >
-        <% if user_signed_in? %>
-          <%= link_to edit_user_registration_path do %>
-            <div class="h-12 flex items-center rounded-md hover:bg-slate-100 px-4 py-2">
-              <span class="font-outfit block text-sm text-gray-900">Account Settings</span>
-            </div>
-          <% end %>
-          <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
-            <div class="h-12 flex items-center rounded-md hover:bg-slate-100 px-4 py-2">
-              <span class="font-outfit block text-sm text-gray-900">Log Out</span>
-            </div>
-          <% end %>
-        <% else %>
-          <%= link_to new_user_registration_path do %>
-            <div class="h-12 flex items-center rounded-md hover:bg-slate-100 px-4 py-2">
-              <span class="font-outfit block text-sm text-gray-900">Sign Up</span>
-            </div>
-          <% end %>
-          <%= link_to new_user_session_path do %>
-            <div class="h-12 flex items-center rounded-md hover:bg-slate-100 px-4 py-2">
-              <span class="font-outfit block text-sm text-gray-900">Log In</span>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</nav>
+<%= render 'shared/navbar' %>
 <main class="container mx-auto max-w-screen-xl min-h-screen px-8 xl:px-0">
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
