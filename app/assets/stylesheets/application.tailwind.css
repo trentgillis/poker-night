@@ -27,6 +27,10 @@
         @apply bg-gradient-to-r from-gray-500 to-slate-500 hover:from-gray-400 hover:to-slate-400
     }
 
+    .btn-danger {
+        @apply bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-400 hover:to-rose-400
+    }
+
     .link {
         @apply text-sm font-bold text-teal-500 underline
     }

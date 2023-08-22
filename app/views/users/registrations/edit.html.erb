@@ -54,6 +54,8 @@
       </div>
     </div>
   <% end %>
-  <%= link_to "Change Password", edit_passwords_path %>
-  <div class="mt-4"><%= link_to "Delete my account", registration_path(resource_name), class: "link", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+  <div class="mt-10 flex flex-col gap-4">
+    <%= link_to "Change Password", edit_passwords_path, class: "btn btn-primary h-12 w-full items-center" %>
+    <%= link_to "Delete my account", registration_path(resource_name), class: "btn btn-danger h-12 w-full items-center", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
+  </div>
 </div>
