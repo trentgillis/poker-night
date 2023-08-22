@@ -20,7 +20,11 @@
     }
 
     .btn-primary {
-        @apply bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-300 hover:to-teal-300
+        @apply bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400
+    }
+
+    .btn-secondary {
+        @apply bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-400 hover:to-indigo-400
     }
 
     .link {
