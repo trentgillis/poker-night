@@ -1,17 +1,25 @@
-<h2 class="h2 text-left">Change Password</h2>
-<%= form_for :user, url: passwords_path, html: { method: :put } do |f| %>
+<%= form_for :user, url: passwords_path, html: { method: :put, class: "space-y-6" } do |f| %>
+  <h2 class="h2 text-left">Change Password</h2>
   <div>
-    <%= f.label :current_password %>
-    <%= f.text_field :current_password %>
+    <%= f.label :current_password, class: "input-label" %>
+    <div class="mt-2">
+      <%= f.password_field :current_password, class: "input-text" %>
+    </div>
   </div>
   <div>
-    <%= f.label :password %>
-    <%= f.text_field :password %>
+    <%= f.label :password, class: "input-label" %>
+    <div class="mt-2">
+      <%= f.password_field :password, class: "input-text" %>
+    </div>
   </div>
   <div>
-    <%= f.label :password_confirmation %>
-    <%= f.text_field :password_confirmation %>
+    <%= f.label :password_confirmation, class: "input-label" %>
+    <div class="mt-2">
+      <%= f.password_field :password_confirmation, class: "input-text" %>
+    </div>
   </div>
-
-  <%= f.submit "Save" %>
+  <div class="flex flex-col gap-4">
+    <%= f.submit "Save", class: "btn btn-primary w-full h-12" %>
+    <%= link_to "Cancel", edit_user_registration_path, class: "btn btn-secondary w-full h-12 items-center" %>
+  </div>
 <% end %>
