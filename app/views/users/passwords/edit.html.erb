@@ -1,0 +1,17 @@
+<h2 class="h2 text-left">Change Password</h2>
+<%= form_for :user, url: passwords_path, html: { method: :put } do |f| %>
+  <div>
+    <%= f.label :current_password %>
+    <%= f.text_field :current_password %>
+  </div>
+  <div>
+    <%= f.label :password %>
+    <%= f.text_field :password %>
+  </div>
+  <div>
+    <%= f.label :password_confirmation %>
+    <%= f.text_field :password_confirmation %>
+  </div>
+
+  <%= f.submit "Save" %>
+<% end %>

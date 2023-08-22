@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'users/registrations' }
   root "winnings#index"
+
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+
+  resource :passwords, module: 'users', only: [:edit, :update]
 end
