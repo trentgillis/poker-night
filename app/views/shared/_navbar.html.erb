@@ -27,23 +27,23 @@
       >
         <% if user_signed_in? %>
           <%= link_to edit_user_registration_path do %>
-            <div class="h-12 flex items-center rounded-md hover:bg-slate-100 px-4 py-2">
+            <div class="h-12 flex items-center rounded-md hover:bg-slate-200 px-4 py-2">
               <span class="font-outfit block text-sm text-gray-900">Account Settings</span>
             </div>
           <% end %>
           <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do %>
-            <div class="h-12 flex items-center rounded-md hover:bg-slate-100 px-4 py-2">
+            <div class="h-12 flex items-center rounded-md hover:bg-slate-200 px-4 py-2">
               <span class="font-outfit block text-sm text-gray-900">Log Out</span>
             </div>
           <% end %>
         <% else %>
           <%= link_to new_user_registration_path do %>
-            <div class="h-12 flex items-center rounded-md hover:bg-slate-100 px-4 py-2">
+            <div class="h-12 flex items-center rounded-md hover:bg-slate-200 px-4 py-2">
               <span class="font-outfit block text-sm text-gray-900">Sign Up</span>
             </div>
           <% end %>
           <%= link_to new_user_session_path do %>
-            <div class="h-12 flex items-center rounded-md hover:bg-slate-100 px-4 py-2">
+            <div class="h-12 flex items-center rounded-md hover:bg-slate-200 px-4 py-2">
               <span class="font-outfit block text-sm text-gray-900">Log In</span>
             </div>
           <% end %>
