@@ -1,29 +1,49 @@
-<h2 class="h2 text-left">Account Settings</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "space-y-6" }) do |f| %>
-  <div>
-    <%= f.label :email, class: "input-label" %>
-    <div class="mt-2">
-      <%= f.email_field :email, class: "input-text" %>
-    </div>
-  </div>
-  <div class="flex gap-4">
-    <div class="w-full">
-      <%= f.label :first_name, class: "input-label" %>
-      <div class="mt-2">
-        <%= f.text_field :first_name, class: "input-text" %>
+<div data-controller="user-registration-edit">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "space-y-6" }) do |f| %>
+    <div class="h-10 flex justify-between items-center">
+      <h2 class="h2 text-left">Account Settings</h2>
+      <div class="flex justify-between gap-4">
+        <button
+          type="button"
+          data-action="click->user-registration-edit#toggleIsEditable"
+          data-user-registration-edit-target="editBtn"
+          class="btn btn-primary h-10 w-28 items-center"
+        >
+          Edit Profile
+        </button>
+        <button
+          type="button"
+          data-action="click->user-registration-edit#toggleIsEditable"
+          data-user-registration-edit-target="cancelBtn"
+          class="btn btn-primary h-10 w-28 items-center hidden"
+        >
+          Cancel
+        </button>
+        <%= f.submit "Save Profile",
+                     class: "btn btn-primary h-10 w-28 items-center hidden",
+                     "data-user-registration-edit-target": "saveBtn" %>
       </div>
     </div>
-    <div class="w-full">
-      <%= f.label :last_name, class: "input-label" %>
+    <div>
+      <%= f.label :email, class: "input-label" %>
       <div class="mt-2">
-        <%= f.text_field :last_name, class: "input-text" %>
+        <%= f.email_field :email, class: "input-text" %>
       </div>
     </div>
-  </div>
-  <div>
-    <%= f.submit "Save", class: "btn btn-primary h-12 w-32" %>
-  </div>
-<% end %>
-
-<div class="mt-4"><%= link_to "Delete my account", registration_path(resource_name), class: "link", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+    <div class="flex gap-4">
+      <div class="w-full">
+        <%= f.label :first_name, class: "input-label" %>
+        <div class="mt-2">
+          <%= f.text_field :first_name, class: "input-text" %>
+        </div>
+      </div>
+      <div class="w-full">
+        <%= f.label :last_name, class: "input-label" %>
+        <div class="mt-2">
+          <%= f.text_field :last_name, class: "input-text" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="mt-4"><%= link_to "Delete my account", registration_path(resource_name), class: "link", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+</div>
