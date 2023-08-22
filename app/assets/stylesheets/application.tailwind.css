@@ -24,7 +24,7 @@
     }
 
     .btn-secondary {
-        @apply bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-400 hover:to-indigo-400
+        @apply bg-gradient-to-r from-slate-400 to-slate-500 hover:from-slate-300 hover:to-slate-400
     }
 
     .link {
