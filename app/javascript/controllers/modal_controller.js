@@ -14,6 +14,10 @@ export default class extends Controller {
     this.modalTarget.remove();
   }
 
+  submitEnd(e) {
+    if (e.detail.success) this.hideModal();
+  }
+
   clickOutside() {
     this.hideModal();
   }

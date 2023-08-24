@@ -12,7 +12,6 @@ class Users::PasswordsController < ApplicationController
 
     if @user.update_with_password(update_password_params)
       sign_in @user, bypass: true
-      redirect_to edit_user_registration_path
     else
       render :edit, status: :unprocessable_entity
     end

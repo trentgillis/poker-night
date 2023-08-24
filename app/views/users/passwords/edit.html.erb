@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "modal" do %>
-  <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true" data-controller="modal" data-modal-target="modal">
+  <div class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true" data-controller="modal" data-modal-target="modal" data-action="turbo:submit-end->modal#submitEnd">
     <div class="fixed inset-0 bg-slate-500 bg-opacity-80 transition-opacity"></div>
     <div class="fixed inset-0 z-10 overflow-y-auto">
       <div class="flex justify-center p-4 text-center sm:items-center sm:p-0">
