@@ -2,7 +2,14 @@ import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
   static values = { isEditable: { type: Boolean } };
-  static targets = ['saveBtn', 'editBtn', 'cancelBtn', 'emailInput', 'firstNameInput', 'lastNameInput'];
+  static targets = [
+    'editBtn',
+    'actionBtnContainer',
+    'editBtnContainer',
+    'emailInput',
+    'firstNameInput',
+    'lastNameInput',
+  ];
 
   onConnect() {
     this.isEditableValue = false;
@@ -13,13 +20,13 @@ export default class extends Controller {
 
     if (this.isEditableValue) {
       this.enabledFormFields();
-      this.showSaveBtn();
-      this.showCancelBtn();
+      this.hideActionBtnContainer();
       this.hideEditBtn();
+      this.showEditBtnContainer();
     } else {
       this.disableFormFields();
-      this.hideSaveBtn();
-      this.hideCancelBtn();
+      this.hideEditBtnContainer();
+      this.showActionBtnContainer();
       this.showEditBtn();
     }
   }
@@ -42,12 +49,20 @@ export default class extends Controller {
     this.lastNameInputTarget.disabled = true;
   }
 
-  hideSaveBtn() {
-    this.saveBtnTarget.classList.add('hidden');
+  hideActionBtnContainer() {
+    this.actionBtnContainerTarget.classList.add('hidden');
   }
 
-  showSaveBtn() {
-    this.saveBtnTarget.classList.remove('hidden');
+  showActionBtnContainer() {
+    this.actionBtnContainerTarget.classList.remove('hidden');
+  }
+
+  hideEditBtnContainer() {
+    this.editBtnContainerTarget.classList.add('hidden');
+  }
+
+  showEditBtnContainer() {
+    this.editBtnContainerTarget.classList.remove('hidden');
   }
 
   hideEditBtn() {
@@ -56,13 +71,5 @@ export default class extends Controller {
 
   showEditBtn() {
     this.editBtnTarget.classList.remove('hidden');
-  }
-
-  hideCancelBtn() {
-    this.cancelBtnTarget.classList.add('hidden');
-  }
-
-  showCancelBtn() {
-    this.cancelBtnTarget.classList.remove('hidden');
   }
 }

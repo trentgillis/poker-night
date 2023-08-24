@@ -2,27 +2,14 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "space-y-6" }) do |f| %>
     <div class="h-10 flex justify-between items-center">
       <h2 class="h2 text-left">Account Settings</h2>
-      <div class="flex justify-between gap-4">
-        <button
-          type="button"
-          data-action="click->user-registration-edit#toggleIsEditable"
-          data-user-registration-edit-target="editBtn"
-          class="btn btn-primary h-10 w-28 items-center"
-        >
-          Edit Profile
-        </button>
-        <button
-          type="reset"
-          data-action="click->user-registration-edit#toggleIsEditable"
-          data-user-registration-edit-target="cancelBtn"
-          class="btn btn-secondary h-10 w-28 items-center hidden"
-        >
-          Cancel
-        </button>
-        <%= f.submit "Save Profile",
-                     class: "btn btn-primary h-10 w-28 items-center hidden",
-                     "data-user-registration-edit-target": "saveBtn" %>
-      </div>
+      <button
+        type="button"
+        data-action="click->user-registration-edit#toggleIsEditable"
+        data-user-registration-edit-target="editBtn"
+        class="btn btn-primary h-10 items-center rounded-3xl"
+      >
+        Edit Profile
+      </button>
     </div>
     <div>
       <%= f.label :email, class: "input-label" %>
@@ -53,8 +40,19 @@
         </div>
       </div>
     </div>
+    <div data-user-registration-edit-target="editBtnContainer" class="pt-4 flex flex-col gap-5 hidden">
+      <%= f.submit "Save Profile",
+                   class: "btn btn-primary h-12 w-full items-center" %>
+      <button
+        type="reset"
+        data-action="click->user-registration-edit#toggleIsEditable"
+        class="btn btn-secondary h-12 w-full items-center"
+      >
+        Cancel
+      </button>
+    </div>
   <% end %>
-  <div class="mt-10 flex flex-col gap-4">
+  <div data-user-registration-edit-target="actionBtnContainer" class="mt-10 flex flex-col gap-5">
     <%= link_to "Change Password", edit_passwords_path, class: "btn btn-primary h-12 w-full items-center" %>
     <%= link_to "Delete my account", registration_path(resource_name), class: "btn btn-danger h-12 w-full items-center", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
   </div>
