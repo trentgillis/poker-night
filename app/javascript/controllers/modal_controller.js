@@ -1,9 +1,20 @@
 import { Controller } from '@hotwired/stimulus';
+import { useClickOutside } from 'stimulus-use';
 
 export default class extends Controller {
-  static targets = ['modal'];
+  static targets = ['modal', 'modalContent'];
+
+  connect() {
+    useClickOutside(this, {
+      element: this.modalContentTarget,
+    });
+  }
 
   hideModal() {
     this.modalTarget.remove();
+  }
+
+  clickOutside() {
+    this.hideModal();
   }
 }
