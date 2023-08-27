@@ -1,5 +1,5 @@
 <% if flash.any? %>
-  <div class="fixed w-full flex items-center justify-center bottom-5">
+  <div class="fixed w-full flex items-center justify-center bottom-5" data-controller="toast" data-toast-target="toast">
     <div class="flex items-center justify-between w-full max-w-xs px-4 py-2 text-gray-700 bg-white rounded-lg shadow-xl border border-gray-200 border-solid" role="alert">
       <div class="flex items-center gap-2">
         <% if flash[:notice] %>
@@ -13,7 +13,7 @@
         <% end %>
         <div class="text-sm font-normal"><%= flash[:notice] || flash[:alert] %></div>
       </div>
-      <button type="button" class="group p-2 rounded-md" data-dismiss-target="#toast-default" aria-label="Close">
+      <button type="button" class="group p-2 rounded-md" aria-label="Close" data-action="click->toast#hideToast">
         <span class="sr-only">Close</span>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-400 group-hover:stroke-gray-600">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
