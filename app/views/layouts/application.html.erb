@@ -11,11 +11,37 @@
 </head>
 <body class="min-h-screen bg-slate-50">
 <%= render "shared/navbar" %>
-<main class="container mx-auto max-w-screen-xl min-h-screen px-8 md:px-0 md:max-w-3xl">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+<main>
+  <% if flash.any? %>
+    <div class="fixed w-full flex items-center justify-center bottom-5">
+      <div class="flex items-center justify-between w-full max-w-xs px-4 py-2 text-gray-700 bg-white rounded-lg shadow-xl border border-gray-200 border-solid" role="alert">
+        <div class="flex items-center gap-2">
+          <% if flash[:notice] %>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-emerald-500">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          <% else %>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-red-500">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
+            </svg>
+          <% end %>
+          <div class="text-sm font-normal"><%= flash[:notice] || flash[:alert] %></div>
+        </div>
+        <button type="button" class="group p-2 rounded-md" data-dismiss-target="#toast-default" aria-label="Close">
+          <span class="sr-only">Close</span>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 stroke-gray-400 group-hover:stroke-gray-600">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="container mx-auto max-w-screen-xl min-h-screen px-8 md:px-0 md:max-w-3xl">
+    <%= yield %>
+  </div>
+
   <%= turbo_frame_tag "modal" %>
-  <%= yield %>
 </main>
 </body>
 </html>
