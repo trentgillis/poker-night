@@ -9,13 +9,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    if params[:user][:password].blank?
-      current_user.update_without_password(passwordless_account_update_params)
-      redirect_to edit_user_registration_path
-    else
-      # TODO: update just the password here
-      super
-    end
+    current_user.update_without_password(passwordless_account_update_params)
+    redirect_to edit_user_registration_path
   end
 
   protected
