@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "winnings#index"
+  root "results#index"
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
