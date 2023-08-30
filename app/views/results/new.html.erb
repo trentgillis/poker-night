@@ -1,0 +1,19 @@
+<h2 class="h2">Add New Results</h2>
+
+<%= form_for @result, html: { class: "space-y-6" } do |f| %>
+  <div>
+    <%= f.label :buy_in_amount_cents, class: "input-label" %>
+    <div class="relative mt-2">
+      <%= f.number_field :buy_in_amount_cents, class: "input-text" %>
+    </div>
+  </div>
+  <div>
+    <%= f.label :win_amount_cents, class: "input-label" %>
+    <div class="mt-2">
+      <%= f.number_field :win_amount_cents, class: "input-text" %>
+    </div>
+  </div>
+  <div>
+    <%= f.submit "Add Result", class: 'btn btn-primary w-full h-12' %>
+  </div>
+<% end %>
