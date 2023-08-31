@@ -20,6 +20,6 @@ class ResultsController < ApplicationController
   protected
 
   def results_params
-    params.require(:result).permit(:buy_in_amount_cents, :win_amount_cents)
+    params.require(:result).permit(:buy_in_amount, :win_amount)
   end
 end
