@@ -1,1 +1,6 @@
-<h1>Winnings</h1>
+<div class="flex justify-between items-center h-12">
+  <h2 class="h2">Total Winnings</h2>
+  <% if user_signed_in? %>
+    <%= link_to "Add Result", new_results_path, class: "btn btn-primary h-10 items-center" %>
+  <% end %>
+</div>
