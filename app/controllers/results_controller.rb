@@ -13,7 +13,7 @@ class ResultsController < ApplicationController
     @result = current_user.results.create(results_params)
 
     if @result.persisted?
-      redirect_to root_path
+      redirect_to root_path, notice: 'Successfully added result.'
     else
       render :new, status: :unprocessable_entity
     end
