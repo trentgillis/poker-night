@@ -4,3 +4,15 @@
     <%= link_to "Add Result", new_results_path, class: "btn btn-primary h-10 items-center" %>
   <% end %>
 </div>
+<div class="mt-10 flex flex-col gap-4">
+  <% @users.each do |user| %>
+    <div class="px-4 py-6 flex justify-between items-center rounded-lg border-2 border-emerald-400">
+      <p>
+        <%= user.first_name %>
+      </p>
+      <p class="font-semibold text-slate-600">
+        $45.25 TODO
+      </p>
+    </div>
+  <% end %>
+</div>
