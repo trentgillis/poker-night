@@ -3,7 +3,9 @@ class User < ApplicationRecord
 
   has_many :results
 
-  def total_winnings
-    results.map { |result| result.win_amount_cents - result.buy_in_amount_cents }.sum
+  def total_winnings_cents
+    results.map do |result|
+      result.win_amount_cents - result.buy_in_amount_cents
+    end.sum
   end
 end

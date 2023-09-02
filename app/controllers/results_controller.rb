@@ -2,7 +2,7 @@ class ResultsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
-    @users = User.all
+    @users = User.all.sort_by(&:total_winnings_cents).reverse
   end
 
   def new
