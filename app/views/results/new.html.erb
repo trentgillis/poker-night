@@ -1,11 +1,11 @@
 <h2 class="h2">Add New Results</h2>
 <%= form_for @result, html: { class: "space-y-6" } do |f| %>
-  <%= render CurrencyInput::Component.new(
+  <%= render CurrencyField::Component.new(
     form: f,
     input_name: :buy_in_amount,
     errors: @result.errors[:buy_in_amount]
   ) %>
-  <%= render CurrencyInput::Component.new(
+  <%= render CurrencyField::Component.new(
     form: f,
     input_name: :win_amount,
     errors: @result.errors[:win_amount]

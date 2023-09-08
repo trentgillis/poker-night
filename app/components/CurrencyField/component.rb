@@ -1,4 +1,4 @@
-class CurrencyInput::Component < ApplicationViewComponent
+class CurrencyField::Component < ApplicationViewComponent
   def initialize(form:, input_name:, errors:)
     @form = form
     @input_name = input_name
