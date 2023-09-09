@@ -6,16 +6,16 @@
         <div data-modal-target="modalContent" class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all my-8 w-full max-w-3xl px-4 py-8">
           <h2 class="h2 text-left">Change Password</h2>
           <%= form_for :user, url: passwords_path, html: { method: :put, class: "space-y-6" } do |f| %>
-            <%= render PasswordField::Component.new(
+            <%= render FormComponents::PasswordField::Component.new(
               form: f,
               input_name: :current_password,
             ) %>
-            <%= render PasswordField::Component.new(
+            <%= render FormComponents::PasswordField::Component.new(
               form: f,
               input_name: :password,
               input_text: "New Password"
             ) %>
-            <%= render PasswordField::Component.new(
+            <%= render FormComponents::PasswordField::Component.new(
               form: f,
               input_name: :current_password,
               input_text: "Confirm New Password"

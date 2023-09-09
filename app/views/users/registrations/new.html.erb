@@ -8,25 +8,25 @@
   <div class="mt-8 mx-auto w-full max-w-sm">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'space-y-6' }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
-      <%= render EmailField::Component.new(
+      <%= render FormComponents::EmailField::Component.new(
         form: f,
         input_name: :email
       ) %>
       <div class="flex flex-col justify-between space-y-6 md:space-y-0 md:flex-row md:gap-4">
-        <%= render TextField::Component.new(
+        <%= render FormComponents::TextField::Component.new(
           form: f,
           input_name: :first_name
         ) %>
-        <%= render TextField::Component.new(
+        <%= render FormComponents::TextField::Component.new(
           form: f,
           input_name: :last_name
         ) %>
       </div>
-      <%= render PasswordField::Component.new(
+      <%= render FormComponents::PasswordField::Component.new(
         form: f,
         input_name: :password
       ) %>
-      <%= render PasswordField::Component.new(
+      <%= render FormComponents::PasswordField::Component.new(
         form: f,
         input_name: :password_confirmation,
         label_text: "Confirm Password"
