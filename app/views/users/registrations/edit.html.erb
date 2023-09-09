@@ -23,13 +23,13 @@
       <%= render FormComponents::TextField::Component.new(
         form: f,
         input_name: :first_name,
-        input_data: { user_registration_edit_target: "firstNameInput" },
+        input_data_attrs: { user_registration_edit_target: "firstNameInput" },
         disabled: true
       ) %>
       <%= render FormComponents::TextField::Component.new(
         form: f,
         input_name: :last_name,
-        input_data: { user_registration_edit_target: "lastNameInput" },
+        input_data_attrs: { user_registration_edit_target: "lastNameInput" },
         disabled: true
       ) %>
     </div>
