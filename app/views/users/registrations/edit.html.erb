@@ -13,15 +13,12 @@
     </button>
   </div>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "space-y-6" }) do |f| %>
-    <div>
-      <%= f.label :email, class: "input-label" %>
-      <div class="mt-2">
-        <%= f.email_field :email,
-                          "data-user-registration-edit-target": "emailInput",
-                          disabled: true,
-                          class: "input-text input-text-disabled" %>
-      </div>
-    </div>
+    <%= render EmailField::Component.new(
+      form: f,
+      input_name: :email,
+      input_data: { user_registration_edit_target: "emailInput" },
+      disabled: true
+    ) %>
     <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row md:gap-4">
       <%= render TextField::Component.new(
         form: f,

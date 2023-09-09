@@ -1,0 +1,9 @@
+<div class="w-full">
+  <%= @form.label @input_name, class: "input-label" %>
+  <div class="mt-2">
+    <%= @form.email_field @input_name,
+                          data: @input_data,
+                          disabled: @disabled,
+                          class: "input-text #{@disabled && 'input-text-disabled'}" %>
+  </div>
+</div>

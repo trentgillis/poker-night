@@ -7,12 +7,10 @@
   </div>
   <div class="mt-8 mx-auto w-full max-w-sm">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'space-y-6' }) do |f| %>
-      <div>
-        <%= f.label :email, class: "input-label" %>
-        <div class="mt-2">
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-text" %>
-        </div>
-      </div>
+      <%= render EmailField::Component.new(
+        form: f,
+        input_name: :email
+      ) %>
       <div>
         <%= f.label :password, class: "input-label" %>
         <div class="mt-2">
