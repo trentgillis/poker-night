@@ -1,51 +1,29 @@
-<div data-controller="user-registration-edit" class="mt-6">
-  <div class="mb-10 h-12 flex justify-between items-center">
-    <h2 class="h2 text-left">Account Settings</h2>
-    <button
-      type="button"
-      data-action="click->user-registration-edit#toggleIsEditable"
-      data-user-registration-edit-target="editBtn"
-      class="p-2 rounded-full hover:bg-slate-200"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-emerald-500">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/>
-      </svg>
-    </button>
-  </div>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "space-y-6" }) do |f| %>
-    <%= render FormComponents::EmailField::Component.new(
-      form: f,
-      input_name: :email,
-      input_data_attrs: { user_registration_edit_target: "emailInput" },
-      disabled: true
-    ) %>
-    <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row md:gap-4">
-      <%= render FormComponents::TextField::Component.new(
-        form: f,
-        input_name: :first_name,
-        input_data_attrs: { user_registration_edit_target: "firstNameInput" },
-        disabled: true
-      ) %>
-      <%= render FormComponents::TextField::Component.new(
-        form: f,
-        input_name: :last_name,
-        input_data_attrs: { user_registration_edit_target: "lastNameInput" },
-        disabled: true
-      ) %>
+<div class="flex flex-col gap-6 mt-6">
+  <div>
+    <div class="h-12 flex justify-start items-center">
+      <h2 class="h2 text-left">Account Settings</h2>
     </div>
-    <div data-user-registration-edit-target="editBtnContainer" class="pt-4 flex flex-col gap-5 hidden">
-      <%= f.submit "Save Profile",
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "space-y-6" }) do |f| %>
+      <%= render FormComponents::EmailField::Component.new(
+        form: f,
+        input_name: :email,
+      ) %>
+      <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row md:gap-4">
+        <%= render FormComponents::TextField::Component.new(
+          form: f,
+          input_name: :first_name,
+        ) %>
+        <%= render FormComponents::TextField::Component.new(
+          form: f,
+          input_name: :last_name,
+        ) %>
+      </div>
+      <%= f.submit "Update Profile",
                    class: "btn btn-primary h-12 w-full items-center" %>
-      <button
-        type="reset"
-        data-action="click->user-registration-edit#toggleIsEditable"
-        class="btn btn-secondary h-12 w-full items-center"
-      >
-        Cancel
-      </button>
-    </div>
-  <% end %>
-  <div data-user-registration-edit-target="actionBtnContainer" class="mt-10 flex flex-col gap-5">
+    <% end %>
+  </div>
+  <hr class="border rounded-full border-slate-600/25"/>
+  <div class="flex flex-col gap-5">
     <%= link_to "Change Password", edit_passwords_path, class: "btn btn-primary h-12 w-full items-center", data: { turbo_frame: "modal" } %>
     <%= link_to "Delete my account", registration_path(resource_name), class: "btn btn-danger h-12 w-full items-center", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
   </div>
