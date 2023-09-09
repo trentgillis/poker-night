@@ -10,7 +10,7 @@
   <%= javascript_importmap_tags %>
 </head>
 <body class="min-h-screen bg-slate-50">
-<%= render "shared/navbar" %>
+<%= render Navbar::Component.new %>
 <main>
   <%= render Toast::Component.new %>
 
