@@ -8,7 +8,7 @@
           <%= form_for :user, url: passwords_path, html: { method: :put, class: "space-y-6" } do |f| %>
             <%= render FormComponents::PasswordField::Component.new(
               form: f,
-              input_name: :current_password,
+              input_name: :current_password
             ) %>
             <%= render FormComponents::PasswordField::Component.new(
               form: f,
