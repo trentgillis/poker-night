@@ -7,29 +7,33 @@
   </div>
   <div class="mt-8 mx-auto w-full max-w-sm">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'space-y-6' }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
       <%= render FormComponents::EmailField::Component.new(
         form: f,
-        input_name: :email
+        input_name: :email,
+        errors: resource.errors.full_messages_for(:email)
       ) %>
       <div class="flex flex-col justify-between space-y-6 md:space-y-0 md:flex-row md:gap-4">
         <%= render FormComponents::TextField::Component.new(
           form: f,
-          input_name: :first_name
+          input_name: :first_name,
+          errors: resource.errors.full_messages_for(:first_name)
         ) %>
         <%= render FormComponents::TextField::Component.new(
           form: f,
-          input_name: :last_name
+          input_name: :last_name,
+          errors: resource.errors.full_messages_for(:last_name)
         ) %>
       </div>
       <%= render FormComponents::PasswordField::Component.new(
         form: f,
-        input_name: :password
+        input_name: :password,
+        errors: resource.errors.full_messages_for(:password)
       ) %>
       <%= render FormComponents::PasswordField::Component.new(
         form: f,
         input_name: :password_confirmation,
-        label_text: "Confirm Password"
+        label_text: "Confirm Password",
+        errors: resource.errors.full_messages_for(:password_confirmation)
       ) %>
       <div>
         <%= f.submit "Sign up", class: 'btn btn-primary w-full h-12' %>
