@@ -1,4 +1,6 @@
-<h2 class="h2">Add New Results</h2>
+<div class="flex justify-start">
+  <h2 class="h2">Add New Results</h2>
+</div>
 <%= form_for @result, html: { class: "space-y-6" } do |f| %>
   <%= render FormComponents::CurrencyField::Component.new(
     form: f,
