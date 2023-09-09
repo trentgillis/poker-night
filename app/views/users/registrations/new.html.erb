@@ -22,18 +22,15 @@
           input_name: :last_name
         ) %>
       </div>
-      <div>
-        <%= f.label :password, class: 'input-label' %>
-        <div class="mt-2">
-          <%= f.password_field :password, autocomplete: "new-password", class: 'input-text' %>
-        </div>
-      </div>
-      <div>
-        <%= f.label :password_confirmation, "Confirm Password", class: 'input-label' %>
-        <div class="mt-2">
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'input-text' %>
-        </div>
-      </div>
+      <%= render PasswordField::Component.new(
+        form: f,
+        input_name: :password
+      ) %>
+      <%= render PasswordField::Component.new(
+        form: f,
+        input_name: :password_confirmation,
+        label_text: "Confirm Password"
+      ) %>
       <div>
         <%= f.submit "Sign up", class: 'btn btn-primary w-full h-12' %>
       </div>

@@ -6,24 +6,20 @@
         <div data-modal-target="modalContent" class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all my-8 w-full max-w-3xl px-4 py-8">
           <h2 class="h2 text-left">Change Password</h2>
           <%= form_for :user, url: passwords_path, html: { method: :put, class: "space-y-6" } do |f| %>
-            <div>
-              <%= f.label :current_password, class: "input-label" %>
-              <div class="mt-2">
-                <%= f.password_field :current_password, class: "input-text" %>
-              </div>
-            </div>
-            <div>
-              <%= f.label :password, "New Password", class: "input-label" %>
-              <div class="mt-2">
-                <%= f.password_field :password, class: "input-text" %>
-              </div>
-            </div>
-            <div>
-              <%= f.label :password_confirmation, "Confirm New Password", class: "input-label" %>
-              <div class="mt-2">
-                <%= f.password_field :password_confirmation, class: "input-text" %>
-              </div>
-            </div>
+            <%= render PasswordField::Component.new(
+              form: f,
+              input_name: :current_password,
+            ) %>
+            <%= render PasswordField::Component.new(
+              form: f,
+              input_name: :password,
+              input_text: "New Password"
+            ) %>
+            <%= render PasswordField::Component.new(
+              form: f,
+              input_name: :current_password,
+              input_text: "Confirm New Password"
+            ) %>
             <div class="flex flex-col gap-4">
               <%= f.submit "Save", class: "btn btn-primary w-full h-12" %>
               <button
