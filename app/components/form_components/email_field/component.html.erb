@@ -2,7 +2,7 @@
   <%= @form.label @input_name, class: "input-label" %>
   <div class="mt-2">
     <%= @form.email_field @input_name,
-                          data: @input_data,
+                          data: @input_data_attrs,
                           disabled: @disabled,
                           class: "input-text #{@disabled && 'input-text-disabled'}" %>
   </div>
