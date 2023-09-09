@@ -4,7 +4,7 @@
     <%= @form.email_field @input_name,
                           data: @input_data_attrs,
                           disabled: @disabled,
-                          class: "input-text #{@disabled && 'input-text-disabled'} #{@errors.any? && 'ring-red-500'}" %>
+                          class: "input-text #{@errors.any? && 'ring-red-500'}" %>
   </div>
   <% if @errors.any? %>
     <p class="mt-1 text-sm text-red-600">
