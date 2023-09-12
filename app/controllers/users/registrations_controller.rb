@@ -9,8 +9,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    current_user.update_without_password(passwordless_account_update_params)
-    redirect_to edit_user_registration_path
+    @user = current_user
+
+    if @user.update_without_password(passwordless_account_update_params)
+      redirect_to edit_user_registration_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   protected

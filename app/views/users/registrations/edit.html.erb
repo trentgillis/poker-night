@@ -7,15 +7,18 @@
       <%= render FormComponents::EmailField::Component.new(
         form: f,
         input_name: :email,
+        errors: @user.errors.full_messages_for(:email),
       ) %>
       <div class="flex flex-col space-y-6 md:space-y-0 md:flex-row md:gap-4">
         <%= render FormComponents::TextField::Component.new(
           form: f,
           input_name: :first_name,
+          errors: @user.errors.full_messages_for(:first_name),
         ) %>
         <%= render FormComponents::TextField::Component.new(
           form: f,
           input_name: :last_name,
+          errors: @user.errors.full_messages_for(:last_name),
         ) %>
       </div>
       <%= f.submit "Update Profile",
