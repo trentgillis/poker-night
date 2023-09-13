@@ -35,3 +35,5 @@
 
 # Ignore editor files
 .idea
+
+/node_modules
