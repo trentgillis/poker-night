@@ -3,30 +3,6 @@
 @import "tailwindcss/utilities";
 
 /* PokerNight CSS/Tailwind Components */
+@import "components/buttons.css";
 @import "components/form.css";
-
-@layer components {
-    .btn {
-        @apply flex justify-center rounded-sm px-3 py-1.5 text-sm text-gray-900 font-semibold leading-6 hover:cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-300
-    }
-
-    .btn-primary {
-        @apply bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400
-    }
-
-    .btn-secondary {
-        @apply bg-gradient-to-r from-gray-500 to-slate-500 hover:from-gray-400 hover:to-slate-400
-    }
-
-    .btn-danger {
-        @apply bg-gradient-to-r from-red-500 to-rose-500 hover:from-red-400 hover:to-rose-400
-    }
-
-    .link {
-        @apply text-sm font-bold text-teal-500 underline
-    }
-
-    .h2 {
-        @apply font-quicksand font-bold text-2xl md:text-3xl text-center text-gray-900
-    }
-}
+@import "components/typography.css";
