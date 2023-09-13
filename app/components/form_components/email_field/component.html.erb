@@ -1,10 +1,10 @@
 <div class="w-full">
-  <%= @form.label @input_name, class: "input-label" %>
+  <%= @form.label @input_name %>
   <div class="mt-2">
     <%= @form.email_field @input_name,
                           data: @input_data_attrs,
                           disabled: @disabled,
-                          class: "input-text #{@errors.any? && 'ring-red-500'}" %>
+                          class: "form-control #{@errors.any? && 'ring-red-500'}" %>
   </div>
   <% if @errors.any? %>
     <p class="mt-1 text-sm text-red-600">
