@@ -1,3 +1,7 @@
+/* PokerNight CSS/Tailwind Components */
+/* NOTE: all imports must come before any lines containing @tailwind */
+@import "components/form.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -9,10 +13,6 @@
 
     .input-text-disabled {
         @apply bg-slate-200 text-gray-700
-    }
-
-    .input-label {
-        @apply block text-sm font-medium leading-6 text-gray-900
     }
 
     .btn {
