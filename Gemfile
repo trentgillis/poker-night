@@ -75,3 +75,4 @@ gem "devise", "~> 4.9"
 gem 'money-rails', '~> 1.12'
 gem "view_component"
 gem "jsbundling-rails"
+gem "cssbundling-rails"
