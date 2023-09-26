@@ -10,7 +10,7 @@ import ModalController from './modal_controller';
 import NavbarController from './navbar_controller';
 import ToastController from './toast_controller';
 
-application.register('components--currency-field', Components__CurrencyFieldController);
+application.register('currency-field', Components__CurrencyFieldController);
 application.register('hello', HelloController);
 application.register('modal', ModalController);
 application.register('navbar', NavbarController);
