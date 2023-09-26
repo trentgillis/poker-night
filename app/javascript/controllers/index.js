@@ -2,19 +2,16 @@
 // Run that command whenever you add a new controller or create them with
 // ./bin/rails generate stimulus controllerName
 
-import { application } from "./application"
+import { application } from './application';
 
-import Components__CurrencyFieldController from "./components/currency_field_controller"
-application.register("components--currency-field", Components__CurrencyFieldController)
+import Components__CurrencyFieldController from './components/currency_field_controller';
+import HelloController from './hello_controller';
+import ModalController from './modal_controller';
+import NavbarController from './navbar_controller';
+import ToastController from './toast_controller';
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
-
-import ModalController from "./modal_controller"
-application.register("modal", ModalController)
-
-import NavbarController from "./navbar_controller"
-application.register("navbar", NavbarController)
-
-import ToastController from "./toast_controller"
-application.register("toast", ToastController)
+application.register('components--currency-field', Components__CurrencyFieldController);
+application.register('hello', HelloController);
+application.register('modal', ModalController);
+application.register('navbar', NavbarController);
+application.register('toast', ToastController);
