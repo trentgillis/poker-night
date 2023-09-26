@@ -71,8 +71,5 @@ group :test do
   gem "webdrivers"
 end
 
-gem "devise", "~> 4.9"
-gem 'money-rails', '~> 1.12'
-gem "view_component"
-gem "jsbundling-rails"
-gem "cssbundling-rails"
+# Poker Night Application Dependencies
+eval_gemfile "Gemfile.poker"
