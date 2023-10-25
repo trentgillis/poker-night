@@ -7,7 +7,7 @@ export default class extends Controller {
   connect() {
     setTimeout(() => {
       leave(this.toastTarget);
-    }, 5000);
+    }, 10000);
 
     enter(this.toastTarget);
   }
