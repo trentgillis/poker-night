@@ -1,23 +1,18 @@
 import { Controller } from '@hotwired/stimulus';
-import { useTransition } from 'stimulus-use';
+import { enter, leave } from 'el-transition';
 
 export default class extends Controller {
   static targets = ['toast'];
 
   connect() {
-    useTransition(this, {
-      element: this.toastTarget,
-    });
-
     setTimeout(() => {
-      this.hideToast();
+      leave(this.toastTarget);
     }, 5000);
 
-    // Runs the enter transition
-    this.enter();
+    enter(this.toastTarget);
   }
 
   hideToast() {
-    this.leave();
+    leave(this.toastTarget);
   }
 }
