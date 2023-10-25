@@ -11,12 +11,19 @@
 <body class="min-h-screen bg-slate-50">
 <%= render Navbar::Component.new %>
 <main>
-  <%= render Toast::Component.new %>
-
   <div class="container mx-auto max-w-screen-xl px-8 md:px-0 md:max-w-3xl">
     <%= yield %>
   </div>
-
+  <!-- Global notification live region, render this permanently at the end of the document -->
+  <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6">
+    <div class="flex w-full flex-col items-center space-y-4">
+      <% flash.each do |_, message| %>
+        <%= render Toast::Component.new do %>
+          <%= message %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
   <%= turbo_frame_tag "modal" %>
 </main>
 </body>
