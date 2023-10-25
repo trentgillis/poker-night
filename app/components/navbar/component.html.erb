@@ -20,12 +20,12 @@
       <div
         data-navbar-target="userMenu"
         class="hidden absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-        data-transition-enter-active="transition ease-out duration-100"
-        data-transition-enter-from="transform opacity-0 scale-95"
-        data-transition-enter-to="transform opacity-100 scale-100"
-        data-transition-leave-active="transition ease-in duration-75"
-        data-transition-leave-from="transform opacity-100 scale-100"
-        data-transition-leave-to="transform opacity-0 scale-95"
+        data-transition-enter="transition ease-out duration-100"
+        data-transition-enter-start="opacity-0 scale-95"
+        data-transition-enter-end="opacity-100 scale-100"
+        data-transition-leave="transition ease-in duration-75"
+        data-transition-leave-start="opacity-100 scale-100"
+        data-transition-leave-end="opacity-0 scale-95"
         role="menu"
       >
         <% if user_signed_in? %>
