@@ -5,6 +5,7 @@
   <%= render FormComponents::CurrencyField::Component.new(
     form: f,
     input_name: :buy_in_amount,
+    autofocus: true,
     errors: @result.errors[:buy_in_amount]
   ) %>
   <%= render FormComponents::CurrencyField::Component.new(

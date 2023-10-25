@@ -4,6 +4,8 @@
     <%= @form.text_field @input_name,
                          data: @input_data_attrs,
                          disabled: @disabled,
+                         autofocus: @autofocus,
+                         autocomplete: @autocomplete,
                          class: "form-control #{@errors.any? && 'ring-red-500'}" %>
   </div>
   <% if @errors.any? %>

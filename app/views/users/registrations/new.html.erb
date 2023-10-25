@@ -10,29 +10,35 @@
       <%= render FormComponents::EmailField::Component.new(
         form: f,
         input_name: :email,
+        autocomplete: "email",
+        autofocus: true,
         errors: resource.errors.full_messages_for(:email)
       ) %>
       <div class="flex flex-col justify-between space-y-6 md:space-y-0 md:flex-row md:gap-4">
         <%= render FormComponents::TextField::Component.new(
           form: f,
           input_name: :first_name,
+          autocomplete: "given-name",
           errors: resource.errors.full_messages_for(:first_name)
         ) %>
         <%= render FormComponents::TextField::Component.new(
           form: f,
           input_name: :last_name,
+          autocomplete: "family-name",
           errors: resource.errors.full_messages_for(:last_name)
         ) %>
       </div>
       <%= render FormComponents::PasswordField::Component.new(
         form: f,
         input_name: :password,
+        autocomplete: "new-password",
         errors: resource.errors.full_messages_for(:password)
       ) %>
       <%= render FormComponents::PasswordField::Component.new(
         form: f,
         input_name: :password_confirmation,
         label_text: "Confirm Password",
+        autocomplete: "new-password",
         errors: resource.errors.full_messages_for(:password_confirmation)
       ) %>
       <div>

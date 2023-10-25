@@ -9,10 +9,13 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'space-y-6' }) do |f| %>
       <%= render FormComponents::EmailField::Component.new(
         form: f,
+        autocomplete: "email",
+        autofocus: true,
         input_name: :email
       ) %>
       <%= render FormComponents::PasswordField::Component.new(
         form: f,
+        autocomplete: "current-password",
         input_name: :password
       ) %>
       <div>

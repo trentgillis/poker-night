@@ -1,7 +1,10 @@
 <div>
   <%= @form.label @input_name, @label_text %>
   <div class="mt-2">
-    <%= @form.password_field @input_name, class: "form-control #{@errors.any? && 'ring-red-500'}" %>
+    <%= @form.password_field @input_name,
+                             class: "form-control #{@errors.any? && 'ring-red-500'}",
+                             autofocus: @autofocus,
+                             autocomplete: @autocomplete %>
   </div>
   <% if @errors.any? %>
     <p class="mt-1 text-sm text-red-600">

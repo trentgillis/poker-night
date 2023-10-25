@@ -8,17 +8,21 @@
           <%= form_for :user, url: passwords_path, html: { method: :put, class: "space-y-6" } do |f| %>
             <%= render FormComponents::PasswordField::Component.new(
               form: f,
-              input_name: :current_password
+              input_name: :current_password,
+              autofocus: true,
+              autocomplete: "current-password"
             ) %>
             <%= render FormComponents::PasswordField::Component.new(
               form: f,
               input_name: :password,
-              label_text: "New Password"
+              label_text: "New Password",
+              autocomplete: "new-password"
             ) %>
             <%= render FormComponents::PasswordField::Component.new(
               form: f,
               input_name: :current_password,
-              label_text: "Confirm New Password"
+              label_text: "Confirm New Password",
+              autocomplete: "new-password"
             ) %>
             <div class="flex flex-col gap-4">
               <%= f.submit "Save", class: "btn btn-primary w-full h-12" %>
