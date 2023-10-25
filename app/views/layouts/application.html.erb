@@ -18,7 +18,7 @@
   <div aria-live="assertive" class="pointer-events-none fixed inset-0 flex items-end px-4 py-6">
     <div class="flex w-full flex-col items-center space-y-4">
       <% flash.each do |_, message| %>
-        <%= render Toast::Component.new do %>
+        <%= render Notification::Component.new do %>
           <%= message %>
         <% end %>
       <% end %>

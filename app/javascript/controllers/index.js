@@ -8,10 +8,10 @@ import Components__CurrencyFieldController from './components/currency_field_con
 import HelloController from './hello_controller';
 import ModalController from './modal_controller';
 import NavbarController from './navbar_controller';
-import ToastController from './toast_controller';
+import NotificationController from './notification_controller';
 
 application.register('currency-field', Components__CurrencyFieldController);
 application.register('hello', HelloController);
 application.register('modal', ModalController);
 application.register('navbar', NavbarController);
-application.register('toast', ToastController);
+application.register('notification', NotificationController);
