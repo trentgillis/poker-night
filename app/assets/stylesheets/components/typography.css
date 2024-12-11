@@ -1,7 +1,0 @@
-.h2 {
-    @apply font-quicksand font-bold text-2xl md:text-3xl text-center text-gray-900
-}
-
-.link {
-    @apply text-sm font-bold text-teal-500 underline
-}
