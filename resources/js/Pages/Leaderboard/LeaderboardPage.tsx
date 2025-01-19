@@ -1,5 +1,9 @@
+import { Layout } from '@/components';
+
 export default function LeaderboardPage() {
-    return (
-        <h1>Hello world</h1>
-    );
+  return (
+    <Layout>
+      <p>leaderboard</p>
+    </Layout>
+  );
 }
