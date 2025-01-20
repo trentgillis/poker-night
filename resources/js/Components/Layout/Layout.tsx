@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Logo } from '@/components';
+import { Nav } from '@/components';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -8,10 +8,9 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div>
-      <Logo></Logo>
-      this is a layout
-      <main>{children}</main>
-    </div>
+    <>
+      <Nav />
+      <main className="mx-auto mt-6 max-w-2xl px-4">{children}</main>
+    </>
   );
 }
