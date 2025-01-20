@@ -1,4 +1,4 @@
-import { Avatar } from '@/components';
+import LeaderboardTableRow from '@/pages/Leaderboard/components/LeaderboardTableRow';
 
 interface LeaderboardTableProps {
   users: any[];
@@ -31,24 +31,17 @@ export default function LeaderBoardTable({ users }: LeaderboardTableProps) {
             </th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td className="whitespace-nowrap px-3 py-4 text-xs font-medium">
-              #1
-            </td>
-            <td className="whitespace-nowrap px-3 py-4 text-xs font-medium">
-              <div className="flex items-center gap-2">
-                <Avatar className="h-6 w-6" imgSrc="" fallback="cp" />
-                <span>Chris P.</span>
-              </div>
-            </td>
-            <td className="w-28 whitespace-nowrap px-3 py-4 text-center text-xs text-green-400">
-              $84.35
-            </td>
-            <td className="w-16 whitespace-nowrap px-3 py-4 text-center text-xs">
-              14
-            </td>
-          </tr>
+        <tbody className="divide-y divide-zinc-400/50">
+          {users.map((user, index) => (
+            <LeaderboardTableRow
+              key={user.id}
+              rank={index + 1}
+              firstName={user.firstName}
+              lastName={user.lastName}
+              winnings={user.winnings}
+              gamesPlayed={user.gamesPlayed}
+            />
+          ))}
         </tbody>
       </table>
     </div>
