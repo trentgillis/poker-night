@@ -37,6 +37,8 @@
     },
     "dependencies": {
         "@fontsource/poppins": "^5.1.1",
-        "lucide-react": "^0.473.0"
+        "@radix-ui/react-avatar": "^1.1.2",
+        "lucide-react": "^0.473.0",
+        "tailwind-merge": "^2.6.0"
     }
 }

@@ -1,3 +1,5 @@
+import { Avatar } from '@/components';
+
 interface LeaderboardTableProps {
   users: any[];
 }
@@ -35,7 +37,10 @@ export default function LeaderBoardTable({ users }: LeaderboardTableProps) {
               #1
             </td>
             <td className="whitespace-nowrap px-3 py-4 text-xs font-medium">
-              <div className="flex items-center gap-1">Chris P.</div>
+              <div className="flex items-center gap-2">
+                <Avatar className="h-6 w-6" imgSrc="" fallback="cp" />
+                <span>Chris P.</span>
+              </div>
             </td>
             <td className="w-28 whitespace-nowrap px-3 py-4 text-center text-xs text-green-400">
               $84.35
