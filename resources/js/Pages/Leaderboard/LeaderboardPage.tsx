@@ -1,9 +1,11 @@
 import { Layout } from '@/components';
+import LeaderBoardTable from '@/pages/Leaderboard/components/LeaderboardTable';
 
 export default function LeaderboardPage() {
   return (
     <Layout>
-      <p>leaderboard</p>
+      <h1 className="font-medium">Leaderboard</h1>
+      <LeaderBoardTable users={[]} />
     </Layout>
   );
 }
