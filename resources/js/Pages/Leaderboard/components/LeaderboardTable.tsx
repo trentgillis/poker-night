@@ -1,4 +1,4 @@
-import LeaderboardTableRow from '@/pages/Leaderboard/components/LeaderboardTableRow';
+import LeaderboardTableRow from './LeaderboardTableRow';
 
 interface LeaderboardTableProps {
   users: any[];

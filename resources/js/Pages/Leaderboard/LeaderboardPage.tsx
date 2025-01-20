@@ -1,5 +1,6 @@
 import { Layout } from '@/components';
-import LeaderBoardTable from '@/pages/Leaderboard/components/LeaderboardTable';
+
+import LeaderBoardTable from './components/LeaderboardTable';
 
 const mockUsers = [
   {
