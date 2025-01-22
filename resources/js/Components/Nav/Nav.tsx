@@ -51,10 +51,10 @@ export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
                     </li>
                     <li className="mt-auto">
                       <div className="-mx-2 flex flex-1 flex-col gap-3">
-                        <Button>
+                        <Button asChild>
                           <Link href="/register">Register</Link>
                         </Button>
-                        <Button variant="outlined">
+                        <Button variant="outlined" asChild>
                           <Link href="/login">Login</Link>
                         </Button>
                       </div>
