@@ -50,7 +50,7 @@ export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
                       </ul>
                     </li>
                     <li className="mt-auto">
-                      <div className="-mx-2 flex flex-1 flex-col gap-3">
+                      <div className="-mx-2 flex flex-1 flex-col gap-2">
                         <Button asChild>
                           <Link href="/register">Register</Link>
                         </Button>
