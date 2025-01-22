@@ -2,7 +2,7 @@ import { Transition, TransitionChild } from '@headlessui/react';
 import { X } from 'lucide-react';
 import React from 'react';
 
-import { Logo } from '@/components';
+import { Button, Logo } from '@/components';
 
 import { Link } from '@inertiajs/react';
 import NavLink from './NavLink';
@@ -51,18 +51,12 @@ export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
                     </li>
                     <li className="mt-auto">
                       <div className="-mx-2 flex flex-1 flex-col gap-3">
-                        <Link
-                          href="/register"
-                          className="w-full rounded bg-zinc-100 px-3 py-2 text-center text-sm text-zinc-950"
-                        >
-                          Register
-                        </Link>
-                        <Link
-                          href="/register"
-                          className="w-full rounded border border-zinc-400/50 px-3 py-2 text-center text-sm text-zinc-100"
-                        >
-                          Login
-                        </Link>
+                        <Button>
+                          <Link href="/register">Register</Link>
+                        </Button>
+                        <Button variant="outlined">
+                          <Link href="/login">Login</Link>
+                        </Button>
                       </div>
                     </li>
                   </ul>
