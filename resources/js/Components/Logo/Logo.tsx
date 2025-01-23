@@ -1,10 +1,11 @@
 interface LogoProps {
+  variant?: 'large' | 'small';
   width?: number;
   height?: number;
 }
 
-export default function Logo({ width, height }: LogoProps) {
-  return (
+export default function Logo({ width, height, variant = 'large' }: LogoProps) {
+  return variant === 'large' ? (
     <svg
       width={width}
       height={height}
@@ -32,6 +33,38 @@ export default function Logo({ width, height }: LogoProps) {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+    </svg>
+  ) : (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g clipPath="url(#clip0_23_350)">
+        <path
+          d="M24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12Z"
+          fill="#B91C1C"
+        />
+        <path
+          d="M7.33334 10C6.33334 11 5.33334 12.1333 5.33334 13.6667C5.33334 14.1482 5.42818 14.625 5.61245 15.0698C5.79672 15.5147 6.0668 15.9189 6.40729 16.2594C7.09492 16.947 8.02755 17.3333 9.00001 17.3333C10.2 17.3333 11 17 12 16C13 17 13.8 17.3333 15 17.3333C15.4815 17.3333 15.9583 17.2385 16.4032 17.0542C16.848 16.87 17.2523 16.5999 17.5927 16.2594C17.9332 15.9189 18.2033 15.5147 18.3876 15.0698C18.5718 14.625 18.6667 14.1482 18.6667 13.6667C18.6667 12.1333 17.6667 11 16.6667 10L12 5.33334L7.33334 10Z"
+          stroke="white"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M12 16V18.6667"
+          stroke="white"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_23_350">
+          <rect width="24" height="24" fill="white" />
+        </clipPath>
+      </defs>
     </svg>
   );
 }
