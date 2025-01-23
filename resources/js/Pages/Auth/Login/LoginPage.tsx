@@ -1,4 +1,4 @@
-import { Button, Layout, Logo } from '@/components';
+import { Button, Layout, Logo, TextInput } from '@/components';
 
 export default function LoginPage() {
   return (
@@ -12,6 +12,9 @@ export default function LoginPage() {
         </div>
         <div className="mx-auto w-full max-w-sm">
           <form className="space-y-6">
+            <div>
+              <TextInput />
+            </div>
             <div className="grid w-full max-w-sm items-center gap-1.5">
               <label className="color-zinc-100 text-sm">Email</label>
               <input
