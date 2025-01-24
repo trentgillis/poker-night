@@ -1,3 +1,5 @@
+import { TriangleAlert } from 'lucide-react';
+
 interface InputErrorProps {
   error: string | undefined;
 }
@@ -5,5 +7,10 @@ interface InputErrorProps {
 export default function InputError({ error }: InputErrorProps) {
   if (!error) return null;
 
-  return <p className="h-2 text-xs text-red-400">{error ?? ''}</p>;
+  return (
+    <div className="mt-1 flex items-center gap-1">
+      <TriangleAlert className="stroke-red-400" size={16} />
+      <p className="line h-2 text-xs/2 text-red-400">{error ?? ''}</p>
+    </div>
+  );
 }

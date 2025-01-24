@@ -5,5 +5,9 @@ export default function FormItem({
   className,
   children,
 }: React.ComponentProps<'div'>) {
-  return <div className={twMerge('space-y-2', className)}>{children}</div>;
+  return (
+    <div className={twMerge('flex flex-col gap-1.5', className)}>
+      {children}
+    </div>
+  );
 }

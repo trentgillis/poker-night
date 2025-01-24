@@ -55,7 +55,7 @@ export default function LoginPage() {
                 <InputError error={errors['password']} />
               </FormItem>
 
-              <Button className="w-full">Sign in</Button>
+              <Button className="w-full">Sign In</Button>
             </form>
           </FormProvider>
         </div>
