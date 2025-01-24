@@ -3,6 +3,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import {
   Button,
+  Checkbox,
   FormItem,
   Input,
   InputError,
@@ -14,7 +15,11 @@ import {
 export default function LoginPage() {
   const errors = usePage().props.errors;
   const form = useForm({
-    mode: 'onBlur',
+    defaultValues: {
+      email: '',
+      password: '',
+      remember: true,
+    },
   });
 
   function onSubmit(formData: any) {
@@ -54,7 +59,17 @@ export default function LoginPage() {
                 />
                 <InputError error={errors['password']} />
               </FormItem>
-
+              <div>
+                <div className="flex items-center space-x-2">
+                  <Checkbox id="remember" {...form.register('remember')} />
+                  <label
+                    htmlFor="remember"
+                    className="font-zinc-100 text-sm leading-none"
+                  >
+                    Remember me
+                  </label>
+                </div>
+              </div>
               <Button className="w-full">Sign In</Button>
             </form>
           </FormProvider>
