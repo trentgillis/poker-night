@@ -1,7 +1,15 @@
-import { Button, Input, Label, Layout, Logo } from '@/components';
-import FormItem from '@/components/Form/FormItem/FormItem';
+import { router } from '@inertiajs/react';
+import { FormProvider, useForm } from 'react-hook-form';
+
+import { Button, FormItem, Input, Label, Layout, Logo } from '@/components';
 
 export default function LoginPage() {
+  const form = useForm();
+
+  function onSubmit(formData: any) {
+    router.post('/login', formData);
+  }
+
   return (
     <Layout>
       <div className="my-20 flex flex-col justify-center gap-10 px-2">
@@ -12,17 +20,23 @@ export default function LoginPage() {
           </h2>
         </div>
         <div className="mx-auto w-full max-w-sm">
-          <form className="space-y-6">
-            <FormItem>
-              <Label htmlFor="email">Email</Label>
-              <Input name="email" id="email" type="text" />
-            </FormItem>
-            <FormItem>
-              <Label htmlFor="password">Password</Label>
-              <Input name="password" id="password" type="password" />
-            </FormItem>
-            <Button className="w-full">Sign in</Button>
-          </form>
+          <FormProvider {...form}>
+            <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
+              <FormItem>
+                <Label htmlFor="email">Email</Label>
+                <Input type="text" id="email" {...form.register('email')} />
+              </FormItem>
+              <FormItem>
+                <Label htmlFor="password">Password</Label>
+                <Input
+                  type="password"
+                  id="password"
+                  {...form.register('password')}
+                />
+              </FormItem>
+              <Button className="w-full">Sign in</Button>
+            </form>
+          </FormProvider>
         </div>
       </div>
     </Layout>
