@@ -1,4 +1,4 @@
-import { router, usePage } from '@inertiajs/react';
+import { Link, router, usePage } from '@inertiajs/react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import {
@@ -59,7 +59,7 @@ export default function LoginPage() {
                 />
                 <InputError error={errors['password']} />
               </FormItem>
-              <div>
+              <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   <Checkbox id="remember" {...form.register('remember')} />
                   <label
@@ -68,6 +68,14 @@ export default function LoginPage() {
                   >
                     Remember me
                   </label>
+                </div>
+                <div>
+                  <Link
+                    className={'text-sm font-medium text-zinc-100'}
+                    href={route('password.request')}
+                  >
+                    Forgot password?
+                  </Link>
                 </div>
               </div>
               <Button className="w-full">Sign In</Button>
