@@ -1,4 +1,5 @@
-import { Button, Layout, Logo, TextInput } from '@/components';
+import { Button, Input, Label, Layout, Logo } from '@/components';
+import FormItem from '@/components/Form/FormItem/FormItem';
 
 export default function LoginPage() {
   return (
@@ -12,23 +13,14 @@ export default function LoginPage() {
         </div>
         <div className="mx-auto w-full max-w-sm">
           <form className="space-y-6">
-            <div>
-              <TextInput />
-            </div>
-            <div className="grid w-full max-w-sm items-center gap-1.5">
-              <label className="color-zinc-100 text-sm">Email</label>
-              <input
-                className="color-zinc-100 flex h-10 w-full rounded-md border border-zinc-400/50 bg-zinc-950 px-3 py-2 ring-offset-zinc-950 focus-visible:border-zinc-400/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-200"
-                type="text"
-              />
-            </div>
-            <div className="grid w-full max-w-sm items-center gap-1.5">
-              <label className="color-zinc-100 text-sm">Password</label>
-              <input
-                className="color-zinc-100 flex h-10 w-full rounded-md border border-zinc-400/50 bg-zinc-950 px-3 py-2 ring-offset-zinc-950 focus-visible:border-zinc-400/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-200"
-                type="password"
-              />
-            </div>
+            <FormItem>
+              <Label htmlFor="email">Email</Label>
+              <Input name="email" id="email" type="text" />
+            </FormItem>
+            <FormItem>
+              <Label htmlFor="password">Password</Label>
+              <Input name="password" id="password" type="password" />
+            </FormItem>
             <Button className="w-full">Sign in</Button>
           </form>
         </div>
