@@ -4,7 +4,7 @@ import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
 const buttonVariants = cva(
-  'rounded px-3 py-2 text-center text-sm font-medium transition-colors',
+  'rounded-sm px-3 py-2 text-center text-sm font-medium transition-colors',
   {
     variants: {
       variant: {

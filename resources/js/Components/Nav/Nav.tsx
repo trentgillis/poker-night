@@ -18,13 +18,13 @@ export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
       <div className="relative z-50" role="dialog" aria-modal="true">
         <TransitionChild>
           <div
-            className="fixed inset-0 bg-zinc-950/80 transition duration-300 ease-linear data-[closed]:opacity-0"
+            className="fixed inset-0 bg-zinc-950/80 transition duration-300 ease-linear data-closed:opacity-0"
             aria-hidden="true"
           ></div>
         </TransitionChild>
         <div className="fixed inset-0 flex justify-end">
           <TransitionChild>
-            <div className="relative ml-16 flex w-full max-w-xs flex-1 transform transition ease-in-out data-[closed]:translate-x-full">
+            <div className="relative ml-16 flex w-full max-w-xs flex-1 transform transition ease-in-out data-closed:translate-x-full">
               <TransitionChild>
                 <div className="absolute right-0 top-0 flex w-16 justify-center pt-5 transition duration-300 ease-in-out">
                   <button
