@@ -25,16 +25,21 @@ export default function LoginPage() {
 
   return (
     <Layout>
-      <div className="my-20 flex flex-col justify-center gap-10 px-2">
+      <div className="my-20 flex flex-col justify-center px-2">
         <div className="mx-auto flex w-full max-w-sm flex-col">
           <Logo variant="small" height={40} />
           <h2 className="mt-6 text-center text-xl font-semibold text-zinc-100">
             Sign In
           </h2>
         </div>
-        <div className="mx-auto w-full max-w-sm">
+        <div className="mx-auto mt-10 w-full max-w-sm">
           <FormProvider {...form}>
             <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
+              {errors['root'] && (
+                <div className="mb-5 text-center text-sm text-red-400">
+                  {errors['root']}
+                </div>
+              )}
               <FormItem>
                 <Label htmlFor="email">Email</Label>
                 <Input type="text" id="email" {...form.register('email')} />
@@ -47,7 +52,9 @@ export default function LoginPage() {
                   id="password"
                   {...form.register('password')}
                 />
+                <InputError error={errors['password']} />
               </FormItem>
+
               <Button className="w-full">Sign in</Button>
             </form>
           </FormProvider>
