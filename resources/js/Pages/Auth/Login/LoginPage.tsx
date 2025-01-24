@@ -1,13 +1,26 @@
-import { router } from '@inertiajs/react';
+import { router, usePage } from '@inertiajs/react';
 import { FormProvider, useForm } from 'react-hook-form';
 
-import { Button, FormItem, Input, Label, Layout, Logo } from '@/components';
+import {
+  Button,
+  FormItem,
+  Input,
+  InputError,
+  Label,
+  Layout,
+  Logo,
+} from '@/components';
 
 export default function LoginPage() {
-  const form = useForm();
+  const errors = usePage().props.errors;
+  const form = useForm({
+    mode: 'onBlur',
+  });
 
   function onSubmit(formData: any) {
-    router.post('/login', formData);
+    router.post('/login', formData, {
+      onFinish: () => form.resetField('password'),
+    });
   }
 
   return (
@@ -25,6 +38,7 @@ export default function LoginPage() {
               <FormItem>
                 <Label htmlFor="email">Email</Label>
                 <Input type="text" id="email" {...form.register('email')} />
+                <InputError error={errors['email']} />
               </FormItem>
               <FormItem>
                 <Label htmlFor="password">Password</Label>
