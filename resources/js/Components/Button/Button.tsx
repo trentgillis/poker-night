@@ -4,12 +4,12 @@ import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
 const buttonVariants = cva(
-  'rounded-sm px-3 py-2 text-center text-sm font-medium transition-colors',
+  'rounded-sm px-3 py-2 text-center text-sm font-medium transition-colors ring-offset-background focus-visible:outline-none focus-visible:ring-offset-2 focus-visible:ring-2 hover:cursor-pointer',
   {
     variants: {
       variant: {
-        primary: 'bg-primary text-zinc-100 hover:bg-zinc-200',
-        outlined: 'border border-zinc-400/50 text-zinc-100 hover:bg-zinc-900',
+        primary: 'bg-primary text-white hover:bg-primary-muted',
+        outlined: 'border border-border text-white hover:bg-zinc-900',
       },
     },
     defaultVariants: {

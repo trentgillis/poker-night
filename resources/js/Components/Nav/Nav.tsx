@@ -18,7 +18,7 @@ export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
       <div className="relative z-50" role="dialog" aria-modal="true">
         <TransitionChild>
           <div
-            className="fixed inset-0 bg-zinc-950/80 transition duration-300 ease-linear data-closed:opacity-0"
+            className="bg-background/80 fixed inset-0 transition duration-300 ease-linear data-closed:opacity-0"
             aria-hidden="true"
           ></div>
         </TransitionChild>
@@ -26,10 +26,10 @@ export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
           <TransitionChild>
             <div className="relative ml-16 flex w-full max-w-xs flex-1 transform transition ease-in-out data-closed:translate-x-full">
               <TransitionChild>
-                <div className="absolute right-0 top-0 flex w-16 justify-center pt-5 transition duration-300 ease-in-out">
+                <div className="absolute top-0 right-0 flex w-16 justify-center pt-5 transition duration-300 ease-in-out">
                   <button
                     type="button"
-                    className="-m-2.5 p-2.5"
+                    className="-m-2.5 p-2.5 hover:cursor-pointer"
                     onClick={() => setMenuOpen(false)}
                   >
                     <span className="sr-only">Close sidebar</span>
@@ -37,7 +37,7 @@ export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
                   </button>
                 </div>
               </TransitionChild>
-              <div className="flex grow flex-col gap-y-4 overflow-y-auto border-l border-zinc-500/50 bg-zinc-950 px-6 pb-4">
+              <div className="border-border bg-background flex grow flex-col gap-y-4 overflow-y-auto border-l px-6 pb-4">
                 <div className="flex h-16 shrink-0 items-center">
                   <Logo height={20} />
                 </div>

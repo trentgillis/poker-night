@@ -13,7 +13,7 @@ export default function FormLabel({
   return (
     <LabelPrimitive
       htmlFor={id}
-      className={twMerge('color-zinc-100 text-sm', className)}
+      className={twMerge('color-white text-sm', className)}
       {...rest}
     >
       {children}

@@ -9,8 +9,8 @@ export default function InputError({ error }: InputErrorProps) {
 
   return (
     <div className="mt-1 flex items-center gap-1">
-      <TriangleAlert className="stroke-red-400" size={16} />
-      <p className="line h-2 text-xs/2 text-red-400">{error ?? ''}</p>
+      <TriangleAlert className="stroke-error" size={16} />
+      <p className="line text-error h-2 text-xs/2">{error ?? ''}</p>
     </div>
   );
 }

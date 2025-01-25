@@ -14,12 +14,12 @@ export default function Checkbox({
     <CheckboxPrimitive.Root
       id={id}
       className={twMerge(
-        'h-4 w-4 shrink-0 rounded-sm border border-zinc-100 ring-offset-zinc-950 focus-visible:ring-2 focus-visible:ring-zinc-200 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-zinc-100 data-[state=checked]:text-zinc-950',
+        'ring-offset-background focus-visible:ring-ring data-[state=checked]:text-background h-4 w-4 shrink-0 rounded-sm border border-white hover:cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-white',
         className,
       )}
       {...props}
     >
-      <CheckboxPrimitive.Indicator className="flex items-center justify-center text-zinc-950">
+      <CheckboxPrimitive.Indicator className="text-background flex items-center justify-center">
         <Check className="h-4 w-4" />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>

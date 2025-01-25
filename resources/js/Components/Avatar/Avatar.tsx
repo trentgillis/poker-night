@@ -23,7 +23,7 @@ export default function Avatar({
         className="aspect-square h-full w-full"
         src={imgSrc}
       />
-      <AvatarPrimitive.AvatarFallback className="flex h-full w-full items-center justify-center rounded-full bg-zinc-100 text-[10px] text-zinc-950">
+      <AvatarPrimitive.AvatarFallback className="text-background flex h-full w-full items-center justify-center rounded-full bg-white text-[10px]">
         {fallback.toUpperCase()}
       </AvatarPrimitive.AvatarFallback>
     </AvatarPrimitive.Root>

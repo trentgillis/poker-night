@@ -10,7 +10,7 @@ interface HeaderProps {
 
 export default function Header({ setMenuOpen }: HeaderProps) {
   return (
-    <header className="flex h-14 w-full items-center justify-between border-b border-zinc-400/50 px-4">
+    <header className="border-border flex h-14 w-full items-center justify-between border-b px-4">
       <div className="flex flex-1 justify-start">
         <Link href="/">
           <Logo height={20} />
@@ -19,7 +19,7 @@ export default function Header({ setMenuOpen }: HeaderProps) {
       <div>
         <button
           type="button"
-          className="-mr-4 flex h-12 w-12 items-center justify-center"
+          className="-mr-4 flex h-12 w-12 items-center justify-center hover:cursor-pointer"
           onClick={() => setMenuOpen(true)}
         >
           <Menu size={20} strokeWidth={1} />

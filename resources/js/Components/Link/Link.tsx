@@ -9,7 +9,7 @@ export default function Link({
 }: React.ComponentProps<typeof InertiaLink>) {
   return (
     <InertiaLink
-      className={twMerge('font-semibold text-zinc-100', className)}
+      className={twMerge('font-semibold text-white', className)}
       {...props}
     >
       {children}
