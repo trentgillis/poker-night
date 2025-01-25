@@ -1,9 +1,10 @@
 import { Transition, TransitionChild } from '@headlessui/react';
 import { X } from 'lucide-react';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { Button, Logo } from '@/components';
 
+import { useUser } from '@/hooks/useUser';
 import { Link } from '@inertiajs/react';
 import NavLink from './NavLink';
 
@@ -13,6 +14,12 @@ interface NavProps {
 }
 
 export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
+  const user = useUser();
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [user]);
+
   return (
     <Transition show={menuOpen}>
       <div className="relative z-50" role="dialog" aria-modal="true">
@@ -49,15 +56,25 @@ export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
                         <NavLink href="/games">Previous Games</NavLink>
                       </ul>
                     </li>
-                    <li className="mt-auto">
-                      <div className="-mx-2 flex flex-1 flex-col gap-2">
-                        <Button asChild>
-                          <Link href="/register">Register</Link>
-                        </Button>
-                        <Button variant="outlined" asChild>
-                          <Link href="/login">Login</Link>
-                        </Button>
-                      </div>
+                    <li className="border-top border-border mt-auto pt-4">
+                      {user ? (
+                        <div className="-mx-2 flex flex-1 flex-col gap-2">
+                          <Button variant="outlined" asChild>
+                            <Link method="post" href={route('logout')}>
+                              Logout
+                            </Link>
+                          </Button>
+                        </div>
+                      ) : (
+                        <div className="-mx-2 flex flex-1 flex-col gap-2">
+                          <Button asChild>
+                            <Link href={route('register')}>Register</Link>
+                          </Button>
+                          <Button variant="outlined" asChild>
+                            <Link href={route('login')}>Login</Link>
+                          </Button>
+                        </div>
+                      )}
                     </li>
                   </ul>
                 </nav>

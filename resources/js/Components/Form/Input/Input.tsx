@@ -1,4 +1,4 @@
-import { useFormField } from '@/hooks/form';
+import { useFormField } from '@/hooks';
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 

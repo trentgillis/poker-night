@@ -1,4 +1,4 @@
-import { useFormField } from '@/hooks/form';
+import { useFormField } from '@/hooks';
 import { Label as LabelPrimitive } from '@radix-ui/react-label';
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
