@@ -49,14 +49,14 @@ export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
                   <Logo height={20} />
                 </div>
                 <nav className="flex flex-1 flex-col">
-                  <ul role="list" className="flex flex-1 flex-col gap-y-7">
+                  <ul role="list" className="flex flex-1 flex-col">
                     <li>
                       <ul role="list" className="-mx-2 space-y-2">
                         <NavLink href="/">Leaderboard</NavLink>
                         <NavLink href="/games">Previous Games</NavLink>
                       </ul>
                     </li>
-                    <li className="border-top border-border mt-auto pt-4">
+                    <li className="mt-auto pt-4">
                       {user ? (
                         <div className="-mx-2 flex flex-1 flex-col gap-2">
                           <Button variant="link" asChild>
