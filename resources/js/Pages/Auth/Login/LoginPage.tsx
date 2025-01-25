@@ -8,7 +8,6 @@ import {
   FormItem,
   FormLabel,
   Input,
-  InputError,
   Layout,
   Logo,
 } from '@/components';
@@ -24,7 +23,6 @@ export default function LoginPage() {
   });
 
   function onSubmit(formData: any) {
-    console.log(formData);
     router.post('/login', formData, {
       onFinish: () => form.resetField('password'),
     });
@@ -50,22 +48,22 @@ export default function LoginPage() {
               <FormField
                 control={form.control}
                 name="email"
+                errors={errors}
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Email</FormLabel>
                     <Input type="text" {...field} />
-                    <InputError error={errors['email']} />
                   </FormItem>
                 )}
               />
               <FormField
                 control={form.control}
                 name="password"
+                errors={errors}
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <Input type="password" {...field} />
-                    <InputError error={errors['password']} />
                   </FormItem>
                 )}
               />

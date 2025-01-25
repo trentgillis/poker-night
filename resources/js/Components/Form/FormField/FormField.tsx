@@ -12,6 +12,7 @@ interface FormFieldContextValue<
 > {
   id: string;
   name: TName;
+  errors?: Record<string, string>;
 }
 
 export const FormFieldContext = React.createContext<FormFieldContextValue>(
@@ -21,11 +22,13 @@ export const FormFieldContext = React.createContext<FormFieldContextValue>(
 export default function FormField<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->({ ...props }: ControllerProps<TFieldValues, TName>) {
+>({
+  ...props
+}: ControllerProps<TFieldValues, TName> & { errors?: Record<string, string> }) {
   const id = React.useId();
 
   return (
-    <FormFieldContext value={{ id, name: props.name }}>
+    <FormFieldContext value={{ id, name: props.name, errors: props.errors }}>
       <Controller {...props} />
     </FormFieldContext>
   );
