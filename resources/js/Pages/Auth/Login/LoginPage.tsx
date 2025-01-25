@@ -4,10 +4,11 @@ import { FormProvider, useForm } from 'react-hook-form';
 import {
   Button,
   Checkbox,
+  FormField,
   FormItem,
+  FormLabel,
   Input,
   InputError,
-  Label,
   Layout,
   Logo,
 } from '@/components';
@@ -23,6 +24,7 @@ export default function LoginPage() {
   });
 
   function onSubmit(formData: any) {
+    console.log(formData);
     router.post('/login', formData, {
       onFinish: () => form.resetField('password'),
     });
@@ -45,30 +47,42 @@ export default function LoginPage() {
                   {errors['root']}
                 </div>
               )}
-              <FormItem>
-                <Label htmlFor="email">Email</Label>
-                <Input type="text" id="email" {...form.register('email')} />
-                <InputError error={errors['email']} />
-              </FormItem>
-              <FormItem>
-                <Label htmlFor="password">Password</Label>
-                <Input
-                  type="password"
-                  id="password"
-                  {...form.register('password')}
-                />
-                <InputError error={errors['password']} />
-              </FormItem>
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email</FormLabel>
+                    <Input type="text" {...field} />
+                    <InputError error={errors['email']} />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <Input type="password" {...field} />
+                    <InputError error={errors['password']} />
+                  </FormItem>
+                )}
+              />
               <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="remember" {...form.register('remember')} />
-                  <label
-                    htmlFor="remember"
-                    className="font-zinc-100 text-sm leading-none"
-                  >
-                    Remember me
-                  </label>
-                </div>
+                <FormField
+                  control={form.control}
+                  name="remember"
+                  render={({ field }) => (
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                      />
+                      <FormLabel>Remember me</FormLabel>
+                    </div>
+                  )}
+                />
                 <div>
                   <Link
                     className={'text-sm font-medium text-zinc-100'}
