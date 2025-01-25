@@ -10,6 +10,7 @@ const buttonVariants = cva(
       variant: {
         primary: 'bg-primary text-white hover:bg-primary-muted',
         outlined: 'border border-border text-white hover:bg-zinc-900',
+        link: 'text-left text-white font-medium',
       },
     },
     defaultVariants: {

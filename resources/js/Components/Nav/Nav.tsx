@@ -59,7 +59,7 @@ export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
                     <li className="border-top border-border mt-auto pt-4">
                       {user ? (
                         <div className="-mx-2 flex flex-1 flex-col gap-2">
-                          <Button variant="outlined" asChild>
+                          <Button variant="link" asChild>
                             <Link method="post" href={route('logout')}>
                               Logout
                             </Link>

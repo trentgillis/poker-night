@@ -1,3 +1,6 @@
+import { router, usePage } from '@inertiajs/react';
+import { FormProvider, useForm } from 'react-hook-form';
+
 import {
   Button,
   FormField,
@@ -8,8 +11,6 @@ import {
   Link,
   Logo,
 } from '@/components';
-import { router, usePage } from '@inertiajs/react';
-import { FormProvider, useForm } from 'react-hook-form';
 
 export default function RegisterPage() {
   const errors = usePage().props.errors;
