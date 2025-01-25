@@ -1,4 +1,4 @@
-import { Link, router, usePage } from '@inertiajs/react';
+import { router, usePage } from '@inertiajs/react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import {
@@ -9,6 +9,7 @@ import {
   FormLabel,
   Input,
   Layout,
+  Link,
   Logo,
 } from '@/components';
 
@@ -23,7 +24,7 @@ export default function LoginPage() {
   });
 
   function onSubmit(formData: any) {
-    router.post('/login', formData, {
+    router.post(route('login'), formData, {
       onFinish: () => form.resetField('password'),
     });
   }
@@ -82,10 +83,7 @@ export default function LoginPage() {
                   )}
                 />
                 <div>
-                  <Link
-                    className={'text-sm font-medium text-zinc-100'}
-                    href={route('password.request')}
-                  >
+                  <Link className="text-sm" href={route('password.request')}>
                     Forgot password?
                   </Link>
                 </div>
@@ -93,6 +91,9 @@ export default function LoginPage() {
               <Button className="w-full">Sign In</Button>
             </form>
           </FormProvider>
+          <div className="mt-10 text-center text-sm text-zinc-300">
+            Need an account? <Link href={route('register')}>Sign up</Link>
+          </div>
         </div>
       </div>
     </Layout>
