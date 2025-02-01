@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\CashGame;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CashGame>
+ * @extends Factory<CashGame>
  */
 class CashGameFactory extends Factory
 {
@@ -17,7 +18,9 @@ class CashGameFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'status' => 'complete',
+            'stakes' => '10NL',
+            'date' => fake()->date(),
         ];
     }
 }
