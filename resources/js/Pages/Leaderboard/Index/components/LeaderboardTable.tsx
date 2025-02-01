@@ -1,7 +1,9 @@
+import { LeaderboardUser } from '@/pages/Leaderboard/Index/LeaderboardIndex';
+
 import LeaderboardTableRow from './LeaderboardTableRow';
 
 interface LeaderboardTableProps {
-  users: any[];
+  users: LeaderboardUser[];
 }
 
 export default function LeaderBoardTable({ users }: LeaderboardTableProps) {
@@ -36,10 +38,10 @@ export default function LeaderBoardTable({ users }: LeaderboardTableProps) {
             <LeaderboardTableRow
               key={user.id}
               rank={index + 1}
-              firstName={user.firstName}
-              lastName={user.lastName}
-              winnings={user.winnings}
-              gamesPlayed={user.gamesPlayed}
+              firstName={user.first_name}
+              lastName={user.last_name}
+              winnings={user.total_winnings}
+              gamesPlayed={user.cash_games_count}
             />
           ))}
         </tbody>

@@ -2,29 +2,23 @@ import { Layout } from '@/components';
 
 import LeaderBoardTable from './components/LeaderboardTable';
 
-const mockUsers = [
-  {
-    id: 1,
-    firstName: 'Chris',
-    lastName: 'Poitras',
-    winnings: 8_435,
-    gamesPlayed: 14,
-  },
-  {
-    id: 2,
-    firstName: 'Trent',
-    lastName: 'Gillis',
-    winnings: -2_345,
-    gamesPlayed: 16,
-  },
-];
-export default function LeaderboardIndex({ users }: any) {
-  console.log(users);
+export interface LeaderboardUser {
+  id: number;
+  first_name: string;
+  last_name: string;
+  total_winnings: number;
+  cash_games_count: number;
+}
 
+interface LeaderboardIndexProps {
+  users: LeaderboardUser[];
+}
+
+export default function LeaderboardIndex({ users }: LeaderboardIndexProps) {
   return (
     <Layout>
       <h1 className="font-medium">Leaderboard</h1>
-      <LeaderBoardTable users={mockUsers} />
+      <LeaderBoardTable users={users} />
     </Layout>
   );
 }
