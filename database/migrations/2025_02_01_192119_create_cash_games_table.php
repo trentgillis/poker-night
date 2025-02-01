@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('stakes');
             $table->date('date');
+            $table->enum('status', ['in_progress', 'complete']);
 
             $table->timestamps();
         });
