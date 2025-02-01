@@ -4,8 +4,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -49,8 +52,27 @@ class User extends Authenticatable
         ];
     }
 
-    function cashGames(): BelongsToMany
+    public function cashGameResults(): HasMany
+    {
+        return $this->hasMany(CashGameResult::class);
+    }
+
+    public function cashGames(): BelongsToMany
     {
         return $this->belongsToMany(CashGame::class);
+    }
+
+    protected function totalWinnings(): Attribute
+    {
+
+        return Attribute::make(
+            get: function () {
+                $cash_game_results = $this->cashGameResults()->get();
+
+                return $cash_game_results->reduce(function ($acc, $result) {
+                    return $acc + ($result->cash_out_amt - $result->buy_in_amt);
+                }, 0);
+            }
+        );
     }
 }

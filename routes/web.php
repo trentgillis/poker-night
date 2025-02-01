@@ -1,12 +1,10 @@
 <?php
 
+use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Leaderboard/Index');
-})->name('leaderboard');
+Route::get('/', [LeaderboardController::class, 'index'])->name('leaderboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

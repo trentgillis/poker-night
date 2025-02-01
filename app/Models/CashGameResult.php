@@ -12,12 +12,12 @@ class CashGameResult extends Model
     /** @use HasFactory<CashGameResultFactory> */
     use HasFactory;
 
-    function user(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    function game(): BelongsTo
+    public function game(): BelongsTo
     {
         return $this->belongsTo(CashGame::class);
     }

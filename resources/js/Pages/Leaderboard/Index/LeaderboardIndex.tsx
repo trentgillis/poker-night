@@ -18,7 +18,9 @@ const mockUsers = [
     gamesPlayed: 16,
   },
 ];
-export default function LeaderboardIndex() {
+export default function LeaderboardIndex({ users }: any) {
+  console.log(users);
+
   return (
     <Layout>
       <h1 className="font-medium">Leaderboard</h1>

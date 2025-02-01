@@ -13,12 +13,12 @@ class CashGame extends Model
     /** @use HasFactory<CashGameFactory> */
     use HasFactory;
 
-    function results(): HasMany
+    public function results(): HasMany
     {
         return $this->hasMany(CashGameResult::class);
     }
 
-    function users(): BelongsToMany
+    public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
     }
