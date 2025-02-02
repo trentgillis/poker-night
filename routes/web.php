@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\CashGamesController;
+use App\Http\Controllers\CashGameController;
 use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LeaderboardController::class, 'index'])->name('leaderboard');
 
-Route::get('/cash-games', [CashGamesController::class, 'index'])->name('cash-games');
+Route::get('/cash-games', [CashGameController::class, 'index'])->name('cash-games');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
