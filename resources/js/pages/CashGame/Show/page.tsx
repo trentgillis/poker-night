@@ -1,18 +1,19 @@
 import { Layout } from '@/components';
 import GameDetails from '@/pages/CashGame/Show/components/GameDetails';
 import GameHeader from '@/pages/CashGame/Show/components/GameHeader';
-import { CashGame } from '@/types/cash-game';
+import GamePlayersTable from '@/pages/CashGame/Show/components/GamePlayersTable';
+import { CashGame, CashGamePlayer } from '@/types/cash-game';
 
 interface CashGameShowProps {
   cash_game: CashGame;
-  players: any;
+  players: CashGamePlayer[];
 }
 
 export default function CashGameShow({
   cash_game,
   players,
 }: CashGameShowProps) {
-  console.log(cash_game);
+  console.log(players);
   return (
     <Layout>
       <div className="space-y-8">
@@ -27,6 +28,7 @@ export default function CashGameShow({
           stakes={cash_game.stakes}
           numberOfPlayers={players.length}
         />
+        <GamePlayersTable players={players} />
       </div>
     </Layout>
   );
