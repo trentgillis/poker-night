@@ -13,6 +13,8 @@ class CashGame extends Model
     /** @use HasFactory<CashGameFactory> */
     use HasFactory;
 
+    protected $visible = ['id', 'stakes', 'date'];
+
     public function results(): HasMany
     {
         return $this->hasMany(CashGameResult::class);

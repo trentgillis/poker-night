@@ -12,12 +12,13 @@ class LeaderboardController extends Controller
     {
         $users = User::with('cashGames', 'cashGameResults')
             ->withCount('cashGames')
-            ->get();
+            ->get()
+            ->makeVisible(['cash_games_count']);
 
         $users = $users->map(function ($user) {
             $user['total_winnings'] = $user->totalWinnings;
 
-            return $user->only(['id', 'first_name', 'last_name', 'total_winnings', 'cash_games_count']);
+            return $user->makeVisible(['total_winnings']);
         })->sortByDesc('total_winnings')->values()->all();
 
         return Inertia::render('Leaderboard/Index', [

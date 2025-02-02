@@ -15,6 +15,7 @@ interface LeaderboardIndexProps {
 }
 
 export default function LeaderboardIndex({ users }: LeaderboardIndexProps) {
+  console.log(users);
   return (
     <Layout>
       <h1 className="font-medium">Leaderboard</h1>

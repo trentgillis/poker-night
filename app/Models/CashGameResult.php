@@ -12,6 +12,8 @@ class CashGameResult extends Model
     /** @use HasFactory<CashGameResultFactory> */
     use HasFactory;
 
+    public $visible = ['id', 'buy_in_amt', 'cash_out_amt'];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

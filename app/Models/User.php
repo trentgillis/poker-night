@@ -17,6 +17,8 @@ class User extends Authenticatable
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
+    protected $visible = ['id', 'first_name', 'last_name'];
+
     /**
      * The attributes that are mass assignable.
      *

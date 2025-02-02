@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LeaderboardController::class, 'index'])->name('leaderboard');
 
 Route::get('/cash-games', [CashGameController::class, 'index'])->name('cash-games');
+Route::get('/cash-games/{cashGame}', [CashGameController::class, 'show'])->name('cash-game');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
