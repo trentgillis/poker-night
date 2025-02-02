@@ -12,6 +12,7 @@ export default function CashGameShow({
   cash_game,
   players,
 }: CashGameShowProps) {
+  console.log(cash_game);
   return (
     <Layout>
       <div className="space-y-8">
