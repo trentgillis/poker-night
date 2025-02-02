@@ -52,10 +52,8 @@ export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
                   <ul role="list" className="flex flex-1 flex-col">
                     <li>
                       <ul role="list" className="-mx-2 space-y-2">
-                        <NavLink href={route('leaderboard')}>
-                          Leaderboard
-                        </NavLink>
-                        <NavLink href={route('cash-games')}>Cash Games</NavLink>
+                        <NavLink routeName="leaderboard">Leaderboard</NavLink>
+                        <NavLink routeName="cash-games">Cash Games</NavLink>
                       </ul>
                     </li>
                     <li className="mt-auto pt-4">
