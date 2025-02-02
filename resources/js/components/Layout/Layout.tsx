@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Header, Nav } from '@/components';
-
 import { usePage } from '@inertiajs/react';
+
+import Header from './Header';
+import Nav from './Nav';
 import { UserContext } from './UserContext';
 
 interface LayoutProps {
