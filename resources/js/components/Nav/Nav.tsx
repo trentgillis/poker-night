@@ -55,9 +55,7 @@ export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
                         <NavLink href={route('leaderboard')}>
                           Leaderboard
                         </NavLink>
-                        <NavLink href={route('cash-games')}>
-                          Previous Games
-                        </NavLink>
+                        <NavLink href={route('cash-games')}>Cash Games</NavLink>
                       </ul>
                     </li>
                     <li className="mt-auto pt-4">
