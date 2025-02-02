@@ -19,19 +19,19 @@ export default function GamePlayersTable({ players }: GamePlayersTableProps) {
             </th>
             <th
               scope="col"
-              className="w-20 px-1.5 py-3 text-left text-xs font-medium text-zinc-300"
+              className="w-20 px-1.5 py-3 text-center text-xs font-medium text-zinc-300"
             >
               Buy-in
             </th>
             <th
               scope="col"
-              className="w-20 px-1.5 py-3 text-left text-xs font-medium text-zinc-300"
+              className="w-20 px-1.5 py-3 text-center text-xs font-medium text-zinc-300"
             >
               Cash Out
             </th>
             <th
               scope="col"
-              className="w-20 py-3 pr-3 pl-1.5 text-left text-xs font-medium text-zinc-300"
+              className="w-20 py-3 pr-3 pl-1.5 text-center text-xs font-medium text-zinc-300"
             >
               Winnings
             </th>

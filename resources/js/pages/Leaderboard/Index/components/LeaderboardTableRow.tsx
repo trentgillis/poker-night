@@ -17,10 +17,10 @@ export default function LeaderboardTableRow({
 }: LeaderboardTableRowProps) {
   return (
     <tr>
-      <td className="whitespace-nowrap px-3 py-4 text-xs font-medium">
+      <td className="px-3 py-4 text-xs font-medium whitespace-nowrap">
         #{rank}
       </td>
-      <td className="whitespace-nowrap px-3 py-4 text-xs font-medium">
+      <td className="px-3 py-4 text-xs font-medium whitespace-nowrap">
         <div className="flex items-center gap-2">
           <Avatar
             className="h-6 w-6"
@@ -33,14 +33,14 @@ export default function LeaderboardTableRow({
         </div>
       </td>
       <td
-        className={`w-28 whitespace-nowrap px-3 py-4 text-center text-xs ${winnings > 0 ? 'text-green-400' : 'text-red-400'}`}
+        className={`w-20 px-1.5 py-4 text-center font-mono text-xs whitespace-nowrap ${winnings > 0 ? 'text-green-400' : 'text-red-400'}`}
       >
         {Intl.NumberFormat('en-US', {
           style: 'currency',
           currency: 'usd',
         }).format(Math.abs(winnings / 100))}
       </td>
-      <td className="w-16 whitespace-nowrap px-3 py-4 text-center text-xs">
+      <td className="w-22 px-1.5 py-4 text-center text-xs whitespace-nowrap">
         {gamesPlayed}
       </td>
     </tr>

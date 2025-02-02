@@ -7,6 +7,7 @@
 @theme {
     --font-sans: Poppins, ui-sans-serif, system-ui, sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-mono: 'Jetbrains Mono', monospace;
     --color-primary: hsl(0deg 74% 42%);
     --color-primary-muted: hsl(0deg 72% 46%);
     --color-background: oklch(0.141 0.005 285.823);

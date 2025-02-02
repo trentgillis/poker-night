@@ -21,13 +21,13 @@ export default function LeaderBoardTable({ users }: LeaderboardTableProps) {
             </th>
             <th
               scope="col"
-              className="w-28 p-3 text-center text-xs font-medium text-zinc-300"
+              className="w-20 px-1.5 py-3 text-center text-xs font-medium text-zinc-300"
             >
               Winnings
             </th>
             <th
               scope="col"
-              className="w-24 p-3 text-center text-xs font-medium text-zinc-300"
+              className="w-22 px-1.5 py-3 text-center text-xs font-medium text-zinc-300"
             >
               # Games
             </th>
