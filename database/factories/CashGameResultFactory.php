@@ -19,7 +19,7 @@ class CashGameResultFactory extends Factory
     {
         return [
             "buy_in_amt" => fake()->numberBetween(10_00, 20_00),
-            "cash_out_amt" => fake()->numberBetween(0, 20_00),
+            "cash_out_amt" => fake()->numberBetween(0, 30_00),
         ];
     }
 }
