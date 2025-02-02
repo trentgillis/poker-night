@@ -1,4 +1,4 @@
-import { LeaderboardUser } from '@/pages/Leaderboard/Index/LeaderboardIndex';
+import { LeaderboardUser } from '@/pages/Leaderboard/Index/page';
 
 import LeaderboardTableRow from './LeaderboardTableRow';
 

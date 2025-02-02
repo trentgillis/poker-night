@@ -8,7 +8,7 @@ use Inertia\Response;
 
 class LeaderboardController extends Controller
 {
-    function index(): Response
+    public function index(): Response
     {
         $users = User::with('cashGames', 'cashGameResults')
             ->withCount('cashGames')
