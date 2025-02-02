@@ -1,7 +1,10 @@
+import { CashGameStakes, CashGameStatus } from '@/types/cash-game';
+import { getStakesString } from '@/util';
+
 interface GameHeaderProps {
-  gameStatus: string;
+  gameStatus: CashGameStatus;
   gameType: string;
-  stakes: string;
+  stakes: CashGameStakes;
   datePlayed: Date;
 }
 
@@ -14,7 +17,7 @@ export default function GameHeader({
   return (
     <div className="flex flex-col gap-1">
       <h1 className="order-2 text-lg font-semibold">
-        {stakes} {gameType}
+        {getStakesString(stakes)} {gameType}
       </h1>
       <div className="order-1 flex items-center gap-2">
         <span className="text-white-muted text-xs">
