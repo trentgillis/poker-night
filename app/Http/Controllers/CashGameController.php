@@ -21,9 +21,16 @@ class CashGameController extends Controller
     {
         $players = $cashGame
             ->users()
-            ->with('cashGameResults')
-            ->get()
-            ->makeVisible(['cashGameResults']);
+            ->with(['cashGameResults' => function ($query) use ($cashGame) {
+                $query->where('cash_game_id', '=', $cashGame->getAttribute('id'));
+            }])
+            ->get();
+
+        $players = $players->map(function ($player) {
+            $player['game_result'] = $player->cashGameResults->values()->first()->only(['buy_in_amt', 'cash_out_amt']);
+
+            return $player->makeVisible(['game_result']);
+        });
 
         return Inertia::render('CashGame/Show', [
             'cash_game' => $cashGame,
