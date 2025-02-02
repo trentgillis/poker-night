@@ -13,7 +13,7 @@ class CashGameController extends Controller
         $cashGames = CashGame::all()->sortByDesc('date')->values()->all();
 
         return Inertia::render('CashGame/Index', [
-            'cashGames' => $cashGames,
+            'cash_games' => $cashGames,
         ]);
     }
 

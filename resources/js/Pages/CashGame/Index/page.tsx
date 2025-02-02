@@ -1,11 +1,9 @@
 import { Layout } from '@/components';
 
 interface CashGameIndexProps {
-  cashGames: any;
+  cash_games: any;
 }
 
-export default function CashGamesIndex({ cashGames }: CashGameIndexProps) {
-  console.log(cashGames);
-
+export default function CashGamesIndex({ cash_games }: CashGameIndexProps) {
   return <Layout>Cash game index</Layout>;
 }

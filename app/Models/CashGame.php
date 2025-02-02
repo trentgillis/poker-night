@@ -13,7 +13,7 @@ class CashGame extends Model
     /** @use HasFactory<CashGameFactory> */
     use HasFactory;
 
-    protected $visible = ['id', 'stakes', 'date'];
+    protected $visible = ['id', 'stakes', 'date', 'status'];
 
     public function results(): HasMany
     {
