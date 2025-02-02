@@ -13,7 +13,7 @@ import {
   Logo,
 } from '@/components';
 
-export default function LoginPage() {
+export default function Login() {
   const errors = usePage().props.errors;
   const form = useForm({
     defaultValues: {

@@ -12,7 +12,7 @@ import {
   Logo,
 } from '@/components';
 
-export default function RegisterPage() {
+export default function Register() {
   const errors = usePage().props.errors;
   const form = useForm({
     defaultValues: {
