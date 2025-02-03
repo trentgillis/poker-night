@@ -33,7 +33,7 @@ export default function LeaderboardTableRow({
         </div>
       </td>
       <td
-        className={`w-20 px-1.5 py-4 text-center font-mono text-xs whitespace-nowrap ${winnings > 0 ? 'text-green-400' : 'text-red-400'}`}
+        className={`w-20 px-1.5 py-4 text-center font-mono text-xs whitespace-nowrap ${winnings >= 0 ? 'text-green-400' : 'text-red-400'}`}
       >
         {Intl.NumberFormat('en-US', {
           style: 'currency',
