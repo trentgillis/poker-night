@@ -16,6 +16,8 @@ interface NavProps {
 export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
   const user = useUser();
 
+  console.log(user);
+
   useEffect(() => {
     setMenuOpen(false);
   }, [user]);
@@ -76,6 +78,17 @@ export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
                         </div>
                       )}
                     </li>
+                    {user.is_admin && (
+                      <li className="pt-4">
+                        <div className="-mx-2 flex flex-1 flex-col gap-2">
+                          <Button variant="outlined" asChild>
+                            <Link href={route('cash-games.create')}>
+                              Create Cash Game
+                            </Link>
+                          </Button>
+                        </div>
+                      </li>
+                    )}
                   </ul>
                 </nav>
               </div>
