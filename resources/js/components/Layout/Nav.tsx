@@ -16,8 +16,6 @@ interface NavProps {
 export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
   const user = useUser();
 
-  console.log(user);
-
   useEffect(() => {
     setMenuOpen(false);
   }, [user]);
