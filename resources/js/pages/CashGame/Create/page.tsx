@@ -1,4 +1,4 @@
-import { usePage } from '@inertiajs/react';
+import { router, usePage } from '@inertiajs/react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import {
@@ -25,7 +25,7 @@ export default function CashGameCreatePage() {
   });
 
   function onSubmit(formData: any) {
-    console.log(formData);
+    router.post(route('cash-games.store'), formData);
   }
 
   return (

@@ -46,6 +46,7 @@ class CashGameController extends Controller
 
     public function store(Request $request, CashGame $cashGame): Response
     {
+        dd($cashGame);
         return Inertia::render('CashGame/Index', []);
     }
 }
