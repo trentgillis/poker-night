@@ -12,6 +12,9 @@ import CashGameForm from '@/pages/CashGame/Index/components/CashGameForm';
 import React from 'react';
 
 export default function CreateCashGameDrawer() {
+  const [formErrors, setFormErrors] = React.useState<Record<string, string>>(
+    {},
+  );
   const [drawerOpen, setDrawerOpen] = React.useState<boolean>(false);
 
   return (
@@ -23,10 +26,16 @@ export default function CreateCashGameDrawer() {
         <DrawerHeader>
           <DrawerTitle>Create Cash Game</DrawerTitle>
         </DrawerHeader>
-        <CashGameForm setDrawerOpen={setDrawerOpen} />
+        <CashGameForm
+          errors={formErrors}
+          setErrors={setFormErrors}
+          setDrawerOpen={setDrawerOpen}
+        />
         <DrawerFooter>
           <DrawerClose asChild>
-            <Button variant="outlined">Cancel</Button>
+            <Button onClick={() => setFormErrors({})} variant="outlined">
+              Cancel
+            </Button>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>

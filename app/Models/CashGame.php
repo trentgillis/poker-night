@@ -14,6 +14,7 @@ class CashGame extends Model
     use HasFactory;
 
     protected $visible = ['id', 'stakes', 'date', 'status'];
+    protected $fillable = ['stakes', 'date', 'status'];
 
     public function results(): HasMany
     {

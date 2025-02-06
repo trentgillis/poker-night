@@ -16,13 +16,19 @@ import {
 
 interface CashGameFormProps {
   setDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setErrors: React.Dispatch<React.SetStateAction<Record<string, string>>>;
+  errors: Record<string, string>;
 }
 
-export default function CashGameForm({ setDrawerOpen }: CashGameFormProps) {
-  const errors = usePage().props.errors;
+export default function CashGameForm({
+  setDrawerOpen,
+  errors,
+  setErrors,
+}: CashGameFormProps) {
+  const pageErrors = usePage().props.errors;
   const form = useForm({
     defaultValues: {
-      date: Date.now(),
+      date: new Date().toLocaleDateString('en-US'),
       stakes: '10NL',
       status: 'in_progress',
     },
@@ -30,7 +36,8 @@ export default function CashGameForm({ setDrawerOpen }: CashGameFormProps) {
 
   function onSubmit(formData: any) {
     router.post(route('cash-games.store'), formData, {
-      onFinish: () => setDrawerOpen(false),
+      onError: (errors) => setErrors(errors),
+      onSuccess: () => setDrawerOpen(false),
     });
   }
 
@@ -38,6 +45,11 @@ export default function CashGameForm({ setDrawerOpen }: CashGameFormProps) {
     <div className="px-4">
       <FormProvider {...form}>
         <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
+          {errors?.root && (
+            <div className="mb-3 text-center text-sm text-red-400">
+              {errors.root}
+            </div>
+          )}
           <FormField
             control={form.control}
             name="stakes"
