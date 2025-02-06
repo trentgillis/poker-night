@@ -1,4 +1,5 @@
-import { usePage } from '@inertiajs/react';
+import { router, usePage } from '@inertiajs/react';
+import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import {
@@ -13,7 +14,11 @@ import {
   SelectValue,
 } from '@/components';
 
-export default function CashGameForm() {
+interface CashGameFormProps {
+  setDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function CashGameForm({ setDrawerOpen }: CashGameFormProps) {
   const errors = usePage().props.errors;
   const form = useForm({
     defaultValues: {
@@ -24,8 +29,9 @@ export default function CashGameForm() {
   });
 
   function onSubmit(formData: any) {
-    console.log(formData);
-    // router.post(route('cash-games.store'), formData);
+    router.post(route('cash-games.store'), formData, {
+      onFinish: () => setDrawerOpen(false),
+    });
   }
 
   return (

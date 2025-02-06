@@ -2,6 +2,7 @@ import { Layout } from '@/components';
 import { CashGame } from '@/types/cash-game';
 
 import { useUser } from '@/hooks';
+
 import CashGamesTable from './components/CashGamesTable';
 import CreateCashGameDrawer from './components/CreateCashGameDrawer';
 

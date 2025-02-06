@@ -9,10 +9,13 @@ import {
   DrawerTrigger,
 } from '@/components';
 import CashGameForm from '@/pages/CashGame/Index/components/CashGameForm';
+import React from 'react';
 
 export default function CreateCashGameDrawer() {
+  const [drawerOpen, setDrawerOpen] = React.useState<boolean>(false);
+
   return (
-    <Drawer>
+    <Drawer open={drawerOpen} onOpenChange={(isOpen) => setDrawerOpen(isOpen)}>
       <DrawerTrigger asChild>
         <Button className="w-full">Create Game</Button>
       </DrawerTrigger>
@@ -20,7 +23,7 @@ export default function CreateCashGameDrawer() {
         <DrawerHeader>
           <DrawerTitle>Create Cash Game</DrawerTitle>
         </DrawerHeader>
-        <CashGameForm />
+        <CashGameForm setDrawerOpen={setDrawerOpen} />
         <DrawerFooter>
           <DrawerClose asChild>
             <Button variant="outlined">Cancel</Button>
