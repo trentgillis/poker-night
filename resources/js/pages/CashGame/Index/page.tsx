@@ -1,7 +1,9 @@
 import {
   Button,
   Drawer,
+  DrawerClose,
   DrawerContent,
+  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
@@ -32,6 +34,11 @@ export default function CashGamesIndexPage({
             <DrawerHeader>
               <DrawerTitle>Create Cash Game</DrawerTitle>
             </DrawerHeader>
+            <DrawerFooter>
+              <DrawerClose asChild>
+                <Button variant="outlined">Cancel</Button>
+              </DrawerClose>
+            </DrawerFooter>
           </DrawerContent>
         </Drawer>
       </div>
