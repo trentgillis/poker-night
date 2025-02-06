@@ -48,7 +48,8 @@
         "clsx": "^2.1.1",
         "lucide-react": "^0.473.0",
         "react-hook-form": "^7.54.2",
-        "tailwind-merge": "^2.6.0"
+        "tailwind-merge": "^2.6.0",
+        "vaul": "^1.1.2"
     },
     "overrides": {
         "tailwindcss-animate": {
