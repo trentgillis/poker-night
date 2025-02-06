@@ -20,6 +20,7 @@ export default function CashGamesTableRow({
           month: 'short',
           day: 'numeric',
           year: 'numeric',
+          timeZone: 'UTC',
         })}
       </td>
       <td className="px-1.5 py-4 text-left text-xs whitespace-nowrap">
