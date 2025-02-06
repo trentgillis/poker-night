@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LeaderboardController::class, 'index'])->name('leaderboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/cash-games/create', [CashGameController::class, 'create'])->name('cash-games.create');
     Route::post('/cash-games', [CashGameController::class, 'store'])->name('cash-games.store');
 });
 Route::get('/cash-games', [CashGameController::class, 'index'])->name('cash-games');
