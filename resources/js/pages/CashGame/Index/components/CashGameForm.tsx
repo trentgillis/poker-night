@@ -1,4 +1,4 @@
-import { router, usePage } from '@inertiajs/react';
+import { usePage } from '@inertiajs/react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import {
@@ -24,7 +24,8 @@ export default function CashGameForm() {
   });
 
   function onSubmit(formData: any) {
-    router.post(route('cash-games.store'), formData);
+    console.log(formData);
+    // router.post(route('cash-games.store'), formData);
   }
 
   return (
@@ -36,7 +37,7 @@ export default function CashGameForm() {
             name="stakes"
             errors={errors}
             render={({ field }) => (
-              <FormItem className="pt-4 pb-8">
+              <FormItem className="py-6">
                 <FormLabel>Stakes</FormLabel>
                 <Select
                   onValueChange={field.onChange}

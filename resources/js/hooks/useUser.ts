@@ -1,7 +1,7 @@
-import React from 'react';
-
-import { UserContext } from '@/components/Layout/UserContext';
+import { usePage } from '@inertiajs/react';
 
 export function useUser() {
-  return React.useContext(UserContext);
+  const page = usePage();
+
+  return page.props.auth.user;
 }
