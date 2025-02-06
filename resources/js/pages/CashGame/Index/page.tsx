@@ -9,8 +9,10 @@ import {
   DrawerTrigger,
   Layout,
 } from '@/components';
-import CashGamesTable from '@/pages/CashGame/Index/components/CashGamesTable';
 import { CashGame } from '@/types/cash-game';
+
+import CashGameForm from './components/CashGameForm';
+import CashGamesTable from './components/CashGamesTable';
 
 interface CashGameIndexPageProps {
   cash_games: CashGame[];
@@ -34,6 +36,7 @@ export default function CashGamesIndexPage({
             <DrawerHeader>
               <DrawerTitle>Create Cash Game</DrawerTitle>
             </DrawerHeader>
+            <CashGameForm />
             <DrawerFooter>
               <DrawerClose asChild>
                 <Button variant="outlined">Cancel</Button>
