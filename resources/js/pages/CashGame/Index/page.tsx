@@ -2,6 +2,8 @@ import {
   Button,
   Drawer,
   DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
   DrawerTrigger,
   Layout,
 } from '@/components';
@@ -23,10 +25,14 @@ export default function CashGamesIndexPage({
       </div>
       <div className="bg-background fixed bottom-0 left-0 w-full p-4">
         <Drawer>
-          <DrawerTrigger>
+          <DrawerTrigger asChild>
             <Button className="w-full">Create Game</Button>
           </DrawerTrigger>
-          <DrawerContent>stuff</DrawerContent>
+          <DrawerContent>
+            <DrawerHeader>
+              <DrawerTitle>Create Cash Game</DrawerTitle>
+            </DrawerHeader>
+          </DrawerContent>
         </Drawer>
       </div>
     </Layout>
