@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
         $request->session()->regenerate();
 
-        return redirect()->intended(route('leaderboard'));
+        return redirect()->intended(route('leaderboard'))->with('success', 'You have successfully logged in.');
     }
 
     /**
@@ -43,6 +43,6 @@ class AuthenticatedSessionController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect(route('leaderboard'));
+        return redirect(route('leaderboard'))->with('success', 'You have successfully logged out.');
     }
 }

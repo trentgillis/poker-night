@@ -49,6 +49,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('leaderboard', absolute: false));
+        return redirect(route('leaderboard', absolute: false))->with('success', 'Your account has successfully been created.');
     }
 }
