@@ -21,8 +21,6 @@ export default function Layout({ children }: LayoutProps) {
     if (flash.message) toast(flash.message);
   }, [flash]);
 
-  toast.success('test', { description: 'testing' });
-
   return (
     <>
       <Header setMenuOpen={setMenuOpen} />
