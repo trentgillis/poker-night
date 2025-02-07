@@ -5,3 +5,4 @@ export * from './Form';
 export * from './Layout';
 export * from './Link';
 export * from './Logo';
+export * from './Toaster';

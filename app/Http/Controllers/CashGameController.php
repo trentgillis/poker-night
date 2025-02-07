@@ -56,6 +56,6 @@ class CashGameController extends Controller
 
         CashGame::create($attributes);
 
-        return redirect(route('cash-games'));
+        return redirect(route('cash-games'))->with('success', 'Cash game added successfully.');
     }
 }

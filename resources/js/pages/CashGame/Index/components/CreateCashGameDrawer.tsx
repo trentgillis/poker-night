@@ -22,7 +22,7 @@ export default function CreateCashGameDrawer() {
       <DrawerTrigger asChild>
         <Button className="w-full">Create Game</Button>
       </DrawerTrigger>
-      <DrawerContent>
+      <DrawerContent aria-describedby="">
         <DrawerHeader>
           <DrawerTitle>Create Cash Game</DrawerTitle>
         </DrawerHeader>
