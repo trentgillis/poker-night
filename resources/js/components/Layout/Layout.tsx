@@ -3,7 +3,9 @@ import React from 'react';
 import { Toaster } from '@/components';
 import { useToast } from '@/hooks';
 import { useFlash } from '@/hooks/use-flash';
+
 import Header from './Header';
+import InProgressGameBanner from './InProgressGameBanner';
 import Nav from './Nav';
 
 interface LayoutProps {
@@ -25,7 +27,10 @@ export default function Layout({ children }: LayoutProps) {
     <>
       <Header setMenuOpen={setMenuOpen} />
       <Nav menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      <main className="mx-auto mt-6 max-w-2xl px-4">{children}</main>
+      <main className="mx-auto mt-6 max-w-2xl px-4">
+        <InProgressGameBanner />
+        <div className="mt-6">{children}</div>
+      </main>
       <Toaster />
     </>
   );
