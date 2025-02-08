@@ -25,6 +25,7 @@ export default function GameHeader({
             month: 'short',
             day: 'numeric',
             year: 'numeric',
+            timeZone: 'utc',
           })}
         </span>
         {gameStatus === 'in_progress' && (
