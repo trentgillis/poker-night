@@ -14,6 +14,8 @@ class CashGameResult extends Model
 
     public $visible = ['id', 'buy_in_amt', 'cash_out_amt'];
 
+    public $fillable = ['cash_game_id', 'user_id', 'buy_in_amt', 'cash_out_amt'];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

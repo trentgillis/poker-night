@@ -36,7 +36,9 @@ export default function Layout({
       <main className="mx-auto mt-6 max-w-2xl px-4">
         {!hideInProgressBanner &&
           page.props.in_progress &&
-          !page.props.user_joined_game && <InProgressGameBanner />}
+          !page.props.user_joined_game && (
+            <InProgressGameBanner inProgressGame={page.props.in_progress} />
+          )}
         <div className="mt-6">{children}</div>
       </main>
       <Toaster />

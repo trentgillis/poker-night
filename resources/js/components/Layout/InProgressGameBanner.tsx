@@ -1,8 +1,16 @@
+import { CashGame } from '@/types/cash-game';
+import { router } from '@inertiajs/react';
 import { ChevronsRight } from 'lucide-react';
 
-export default function InProgressGameBanner() {
+interface InProgressGameBannerProps {
+  inProgressGame: CashGame | null;
+}
+
+export default function InProgressGameBanner({
+  inProgressGame,
+}: InProgressGameBannerProps) {
   function handleClick() {
-    console.log('join game click');
+    router.post(route('cash-game.join', { cashGame: inProgressGame }));
   }
 
   return (

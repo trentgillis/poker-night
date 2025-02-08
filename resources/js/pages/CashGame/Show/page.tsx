@@ -9,7 +9,7 @@ interface CashGameShowProps {
   players: CashGamePlayer[];
 }
 
-export default function CashGameShow({
+export default function CashGameShowPage({
   cash_game,
   players,
 }: CashGameShowProps) {
