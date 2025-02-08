@@ -13,7 +13,7 @@ import {
   Logo,
 } from '@/components';
 
-export default function Login() {
+export default function LoginPage() {
   const errors = usePage().props.errors;
   const form = useForm({
     defaultValues: {
@@ -30,7 +30,7 @@ export default function Login() {
   }
 
   return (
-    <Layout>
+    <Layout hideInProgressBanner>
       <div className="my-20 flex flex-col justify-center px-2">
         <div className="mx-auto flex w-full max-w-sm flex-col">
           <Logo variant="small" height={40} />

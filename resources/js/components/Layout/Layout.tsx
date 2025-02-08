@@ -11,9 +11,13 @@ import Nav from './Nav';
 
 interface LayoutProps {
   children: React.ReactNode;
+  hideInProgressBanner?: boolean;
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({
+  hideInProgressBanner = false,
+  children,
+}: LayoutProps) {
   const page = usePage();
   const flash = useFlash();
   const toast = useToast();
@@ -25,17 +29,14 @@ export default function Layout({ children }: LayoutProps) {
     if (flash.message) toast(flash.message);
   }, [flash]);
 
-  const showInProgressGameBanner =
-    page.props.in_progress &&
-    !route().current('login') &&
-    !route().current('register');
-
   return (
     <>
       <Header setMenuOpen={setMenuOpen} />
       <Nav menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <main className="mx-auto mt-6 max-w-2xl px-4">
-        {showInProgressGameBanner && <InProgressGameBanner />}
+        {!hideInProgressBanner && page.props.in_progress && (
+          <InProgressGameBanner />
+        )}
         <div className="mt-6">{children}</div>
       </main>
       <Toaster />

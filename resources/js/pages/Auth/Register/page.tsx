@@ -12,7 +12,7 @@ import {
   Logo,
 } from '@/components';
 
-export default function Register() {
+export default function RegisterPage() {
   const errors = usePage().props.errors;
   const form = useForm({
     defaultValues: {
@@ -29,7 +29,7 @@ export default function Register() {
   }
 
   return (
-    <Layout>
+    <Layout hideInProgressBanner>
       <div className="mt-12 pb-12">
         <div className="flex flex-col justify-center px-2">
           <div className="mx-auto flex w-full max-w-sm flex-col">
