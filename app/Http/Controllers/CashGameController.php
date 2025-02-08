@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\CashGame;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -43,6 +44,8 @@ class CashGameController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+        Gate::authorize('create', CashGame::class);
+
         $gameInProgress = CashGame::all()->where('status', '=', 'in_progress')->first();
         if ($gameInProgress) {
             throw ValidationException::withMessages(['root' => 'There is a cash game already in progress.']);
@@ -53,7 +56,6 @@ class CashGameController extends Controller
             'status' => ['required', 'string'],
             'date' => ['required', 'date'],
         ]);
-
         CashGame::create($attributes);
 
         return redirect(route('cash-games'))->with('success', 'Cash game added successfully.');
