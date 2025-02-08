@@ -19,4 +19,5 @@ export type PageProps<
     message?: string;
   };
   in_progress: CashGame | null;
+  user_joined_game: boolean;
 };
