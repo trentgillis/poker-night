@@ -1,3 +1,5 @@
+import { CashGame } from '@/types/cash-game';
+
 export interface User {
   id: number;
   first_name: string;
@@ -16,4 +18,5 @@ export type PageProps<
     error?: string;
     message?: string;
   };
+  in_progress: CashGame | null;
 };
