@@ -68,7 +68,7 @@ class User extends Authenticatable
 
         return Attribute::make(
             get: function () {
-                $cash_game_results = $this->cashGameResults()->get();
+                $cash_game_results = $this->cashGameResults()->whereNotNull('cash_out_amt')->get();
 
                 return $cash_game_results->reduce(function ($acc, $result) {
                     return $acc + ($result->cash_out_amt - $result->buy_in_amt);
