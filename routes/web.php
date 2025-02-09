@@ -10,6 +10,7 @@ Route::get('/', [LeaderboardController::class, 'index'])->name('leaderboard');
 Route::middleware('auth')->group(function () {
     Route::post('/cash-games', [CashGameController::class, 'store'])->name('cash-games.store');
     Route::post('/cash-games/{cashGame}/join', [CashGameController::class, 'join'])->name('cash-game.join');
+    Route::post('/cash-games/{cashGame}/rebuy', [CashGameController::class, 'rebuy'])->name('cash-game.rebuy');
 });
 Route::get('/cash-games', [CashGameController::class, 'index'])->name('cash-games');
 Route::get('/cash-games/{cashGame}', [CashGameController::class, 'show'])->name('cash-game');

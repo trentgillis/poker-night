@@ -61,7 +61,7 @@ class CashGameController extends Controller
         return redirect(route('cash-games'))->with('success', 'Cash game added successfully.');
     }
 
-    public function join(Request $request, CashGame $cashGame): Response|RedirectResponse
+    public function join(Request $request, CashGame $cashGame): RedirectResponse
     {
         if ($cashGame->status !== 'in_progress') {
             return redirect(route('cash-games'))->with('error', 'The requested game is not in progress.');
@@ -78,5 +78,10 @@ class CashGameController extends Controller
             'buy_in_amt' => 10_00,
         ]);
         return redirect(route('cash-game', $cashGame->getAttribute('id')))->with('success', 'Cash game joined successfully.');
+    }
+
+    public function rebuy(Request $request, CashGame $cashGame): RedirectResponse
+    {
+        return redirect(route('cash-game', $cashGame))->with('success', 'Successfully rebought for $10.00');
     }
 }
