@@ -6,6 +6,7 @@ export default function Toaster({
 }: React.ComponentProps<typeof Sonner>) {
   return (
     <Sonner
+      mobileOffset={{ bottom: '12px' }}
       theme="dark"
       toastOptions={{
         classNames: {
