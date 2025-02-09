@@ -77,6 +77,6 @@ class CashGameController extends Controller
             'user_id' => $request->user()->id,
             'buy_in_amt' => 10_00,
         ]);
-        return redirect(route('cash-game', $cashGame->getAttribute('id')));
+        return redirect(route('cash-game', $cashGame->getAttribute('id')))->with('success', 'Cash game joined successfully.');
     }
 }
