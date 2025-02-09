@@ -3,12 +3,12 @@ import {
   Drawer,
   DrawerClose,
   DrawerContent,
+  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from '@/components';
-import DrawerDescription from '@/components/Drawer/DrawerDescription';
 
 export default function CashOutDrawer() {
   return (

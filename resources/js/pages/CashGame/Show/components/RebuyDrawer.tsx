@@ -1,15 +1,16 @@
+import React from 'react';
+
 import {
   Button,
   Drawer,
   DrawerClose,
   DrawerContent,
+  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from '@/components';
-import DrawerDescription from '@/components/Drawer/DrawerDescription';
-import React from 'react';
 
 import RebuyForm from './RebuyForm';
 
