@@ -8,7 +8,7 @@ export default function DrawerFooter({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={twMerge('mt-auto flex flex-col gap-2 p-4', className)}
+      className={twMerge('mt-auto flex flex-col gap-2 px-4 py-2', className)}
       {...props}
     >
       {children}
