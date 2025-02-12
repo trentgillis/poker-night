@@ -82,6 +82,16 @@ class CashGameController extends Controller
 
     public function rebuy(Request $request, CashGame $cashGame): RedirectResponse
     {
+        $attributes = $request->validate([
+            'stakes' => ['required'],
+        ]);
+
+        $request
+            ->user()
+            ->cashGameResults()
+            ->where('cash_game_id', '=', $cashGame->getAttribute('id'))
+            ->increment('buy_in_amt', (int)$attributes['stakes']);
+
         return redirect(route('cash-game', $cashGame))->with('success', 'Successfully rebought for $10.00');
     }
 }
