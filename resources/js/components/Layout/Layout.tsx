@@ -30,18 +30,18 @@ export default function Layout({
   }, [flash]);
 
   return (
-    <>
+    <div className="flex h-full flex-col">
       <Header setMenuOpen={setMenuOpen} />
       <Nav menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      <main className="mx-auto mt-6 max-w-2xl px-4">
+      <main className="mt-6 flex w-full max-w-2xl grow flex-col px-4 lg:mx-auto">
         {!hideInProgressBanner &&
           page.props.in_progress &&
           !page.props.user_joined_game && (
             <InProgressGameBanner inProgressGame={page.props.in_progress} />
           )}
-        <div className="mt-6">{children}</div>
+        {children}
       </main>
       <Toaster />
-    </>
+    </div>
   );
 }

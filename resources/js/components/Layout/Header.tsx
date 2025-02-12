@@ -10,7 +10,7 @@ interface HeaderProps {
 
 export default function Header({ setMenuOpen }: HeaderProps) {
   return (
-    <header className="border-border flex h-14 w-full items-center justify-between border-b px-4">
+    <header className="border-border bg-background sticky top-0 flex h-14 w-full items-center justify-between border-b px-4">
       <div className="flex flex-1 justify-start">
         <Link href="/">
           <Logo height={20} />

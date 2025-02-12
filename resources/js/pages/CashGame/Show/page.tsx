@@ -8,7 +8,7 @@ import GameHeader from './components/GameHeader';
 import GamePlayersTable from './components/GamePlayersTable';
 import RebuyDrawer from './components/RebuyDrawer';
 
-interface CashGameShowProps {
+interface CashGameShowPageProps {
   cash_game: CashGame;
   players: CashGamePlayer[];
 }
@@ -16,12 +16,12 @@ interface CashGameShowProps {
 export default function CashGameShowPage({
   cash_game,
   players,
-}: CashGameShowProps) {
+}: CashGameShowPageProps) {
   const page = usePage();
 
   return (
     <Layout>
-      <div className="space-y-6">
+      <div className="grow space-y-6">
         <GameHeader
           gameType="No Limit Hold'em"
           gameStatus={cash_game.status}
@@ -36,7 +36,7 @@ export default function CashGameShowPage({
         <GamePlayersTable players={players} />
       </div>
       {page.props.user_joined_game && (
-        <div className="bg-background fixed bottom-0 left-0 grid w-full grid-cols-2 gap-2 p-4">
+        <div className="bg-background sticky bottom-0 grid w-full grid-cols-2 gap-2 p-4">
           <CashOutDrawer />
           <RebuyDrawer />
         </div>
