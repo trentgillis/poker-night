@@ -2,12 +2,10 @@ import * as RadioGroupPrimitive from '@radix-ui/react-radio-group';
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 
-import { StakesRadioGroupItem } from '@/components';
-import {
-  getStakesLabelStrings,
-  getStakesValueStrings,
-} from '@/components/Form/StakesRadioGroup/stakes-radio-group-utils';
 import { CashGameStakes } from '@/types/cash-game';
+import { getStakesLabelStrings, getStakesValueStrings } from '@/util';
+
+import StakesRadioGroupItem from './StakesRadioGroupItem';
 
 interface StakesRadioGroupProps
   extends React.ComponentProps<typeof RadioGroupPrimitive.Root> {

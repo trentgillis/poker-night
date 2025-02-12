@@ -3,7 +3,7 @@ import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { Button, FormField, StakesRadioGroup } from '@/components';
-import { getStakesValueStrings } from '@/components/Form/StakesRadioGroup/stakes-radio-group-utils';
+import { getStakesValueStrings } from '@/util';
 
 interface RebuyFormProps {
   setDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -16,7 +16,6 @@ export default function RebuyForm({ setDrawerOpen }: RebuyFormProps) {
   });
 
   function onSubmit(formData: any) {
-    console.log(formData);
     router.post(
       route('cash-game.rebuy', { cashGame: page.props.cash_game }),
       formData,
