@@ -36,7 +36,7 @@ export default function CashGameShowPage({
         <GamePlayersTable players={players} />
       </div>
       {page.props.user_joined_game && (
-        <div className="bg-background sticky bottom-0 grid w-full grid-cols-2 gap-2 p-4">
+        <div className="bg-background sticky bottom-0 grid w-full grid-cols-2 gap-2 py-4">
           <CashOutDrawer />
           <RebuyDrawer />
         </div>
