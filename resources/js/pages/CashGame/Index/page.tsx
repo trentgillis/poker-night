@@ -22,7 +22,7 @@ export default function CashGamesIndexPage({
         <CashGamesTable cashGames={cash_games} />
       </div>
       {user?.is_admin && (
-        <div className="bg-background fixed sticky bottom-0 w-full p-4">
+        <div className="bg-background fixed sticky bottom-0 w-full py-4">
           <CreateCashGameDrawer />
         </div>
       )}

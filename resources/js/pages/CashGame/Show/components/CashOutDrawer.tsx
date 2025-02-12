@@ -10,6 +10,8 @@ import {
   DrawerTrigger,
 } from '@/components';
 
+import CashOutForm from './CashOutForm';
+
 export default function CashOutDrawer() {
   return (
     <Drawer>
@@ -23,6 +25,7 @@ export default function CashOutDrawer() {
           <DrawerTitle>Cash Out</DrawerTitle>
           <DrawerDescription>Cash out of the current game</DrawerDescription>
         </DrawerHeader>
+        <CashOutForm />
         <DrawerFooter>
           <DrawerClose asChild>
             <Button variant="outlined">Cancel</Button>
