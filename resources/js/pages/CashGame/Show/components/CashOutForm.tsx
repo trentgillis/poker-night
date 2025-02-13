@@ -20,20 +20,20 @@ export default function CashOutForm() {
       <FormProvider {...form}>
         <form className="space-y-6 pt-4" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
-            name="amount"
+            name="buyInAmt"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Buy In Amount</FormLabel>
-                <CurrencyInput />
+                <CurrencyInput onChange={field.onChange} />
               </FormItem>
             )}
           />
           <FormField
-            name="amount"
+            name="cashOutAmt"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Cash Out Amount</FormLabel>
-                <CurrencyInput />
+                <CurrencyInput onChange={field.onChange} />
               </FormItem>
             )}
           />
