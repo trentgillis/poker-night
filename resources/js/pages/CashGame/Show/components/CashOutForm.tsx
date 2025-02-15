@@ -9,7 +9,12 @@ import {
 } from '@/components';
 
 export default function CashOutForm() {
-  const form = useForm();
+  const form = useForm({
+    defaultValues: {
+      buyInAmt: '',
+      cashOutAmt: '',
+    },
+  });
 
   function onSubmit(formData: any) {
     console.log(formData);
@@ -24,7 +29,7 @@ export default function CashOutForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Buy In Amount</FormLabel>
-                <CurrencyInput onChange={field.onChange} />
+                <CurrencyInput {...field} />
               </FormItem>
             )}
           />
@@ -33,7 +38,7 @@ export default function CashOutForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Cash Out Amount</FormLabel>
-                <CurrencyInput onChange={field.onChange} />
+                <CurrencyInput {...field} />
               </FormItem>
             )}
           />
