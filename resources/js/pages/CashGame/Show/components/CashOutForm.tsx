@@ -1,4 +1,5 @@
 import { router, usePage } from '@inertiajs/react';
+import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import {
@@ -12,9 +13,13 @@ import { CashGamePlayer } from '@/types/cash-game';
 
 interface CashOutFormProps {
   player: CashGamePlayer;
+  setDrawerOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function CashOutForm({ player }: CashOutFormProps) {
+export default function CashOutForm({
+  player,
+  setDrawerOpen,
+}: CashOutFormProps) {
   const page = usePage();
 
   const form = useForm({
@@ -28,6 +33,9 @@ export default function CashOutForm({ player }: CashOutFormProps) {
     router.post(
       route('cash-games.cash-out', { cashGame: page.props.cash_game }),
       formData,
+      {
+        onSuccess: () => setDrawerOpen(false),
+      },
     );
   }
 
