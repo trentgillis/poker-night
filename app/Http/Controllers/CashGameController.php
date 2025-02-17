@@ -113,8 +113,8 @@ class CashGameController extends Controller
         }
 
         $userResult->update([
-            'buy_in_amt' => (int)$attributes['buyInAmt'] * 100,
-            'cash_out_amt' => (int)$attributes['cashOutAmt'] * 100,
+            'buy_in_amt' => (float)$attributes['buyInAmt'] * 100,
+            'cash_out_amt' => (float)$attributes['cashOutAmt'] * 100,
         ]);
 
         return redirect(route('cash-games.show', $cashGame))->with('success', 'Successfully cashed out');
