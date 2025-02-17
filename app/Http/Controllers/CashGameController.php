@@ -100,6 +100,9 @@ class CashGameController extends Controller
         $attributes = $request->validate([
             'buyInAmt' => ['required', 'string'],
             'cashOutAmt' => ['required', 'string'],
+        ], [
+            'buyInAmt.required' => 'Buy in amount is required.',
+            'cashOutAmt.required' => 'Cash out amount is required.',
         ]);
 
         $userResult = $request
