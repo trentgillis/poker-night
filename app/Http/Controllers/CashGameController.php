@@ -75,7 +75,7 @@ class CashGameController extends Controller
         $cashGame->results()->create([
             'cash_game_id' => $cashGame->getAttribute('id'),
             'user_id' => $request->user()->id,
-            'buy_in_amt' => 10_00,
+            'buy_in_amt' => 10_00, // TODO: adjust initial buy-in based on game stakes
         ]);
         return redirect(route('cash-games.show', $cashGame->getAttribute('id')))->with('success', 'Cash game joined successfully.');
     }
@@ -83,7 +83,7 @@ class CashGameController extends Controller
     public function rebuy(Request $request, CashGame $cashGame): RedirectResponse
     {
         $attributes = $request->validate([
-            'stakes' => ['required'],
+            'stakes' => ['required', 'string'],
         ]);
 
         $request
@@ -93,5 +93,30 @@ class CashGameController extends Controller
             ->increment('buy_in_amt', (int)$attributes['stakes']);
 
         return redirect(route('cash-games.show', $cashGame))->with('success', 'Successfully rebought for $10.00');
+    }
+
+    public function cashOut(Request $request, CashGame $cashGame): RedirectResponse
+    {
+        $attributes = $request->validate([
+            'buyInAmt' => ['required', 'string'],
+            'cashOutAmt' => ['required', 'string'],
+        ]);
+
+        $userResult = $request
+            ->user()
+            ->cashGameResults()
+            ->where('cash_game_id', '=', $cashGame->getAttribute('id'))
+            ->first();
+
+        if ($userResult->cash_out_amt) {
+            return redirect(route('cash-games.show', $cashGame))->with('message', 'You have already cashed out of this game');
+        }
+
+        $userResult->update([
+            'buy_in_amt' => (int)$attributes['buyInAmt'] * 100,
+            'cash_out_amt' => (int)$attributes['cashOutAmt'] * 100,
+        ]);
+
+        return redirect(route('cash-games.show', $cashGame))->with('success', 'Successfully cashed out');
     }
 }

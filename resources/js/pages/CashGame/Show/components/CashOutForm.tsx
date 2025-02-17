@@ -1,3 +1,4 @@
+import { router, usePage } from '@inertiajs/react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import {
@@ -7,17 +8,27 @@ import {
   FormItem,
   FormLabel,
 } from '@/components';
+import { CashGamePlayer } from '@/types/cash-game';
 
-export default function CashOutForm() {
+interface CashOutFormProps {
+  player: CashGamePlayer;
+}
+
+export default function CashOutForm({ player }: CashOutFormProps) {
+  const page = usePage();
+
   const form = useForm({
     defaultValues: {
-      buyInAmt: '',
+      buyInAmt: (player.game_result.buy_in_amt / 100).toFixed(2),
       cashOutAmt: '',
     },
   });
 
   function onSubmit(formData: any) {
-    console.log(formData);
+    router.post(
+      route('cash-games.cash-out', { cashGame: page.props.cash_game }),
+      formData,
+    );
   }
 
   return (
