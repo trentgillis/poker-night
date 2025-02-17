@@ -10,7 +10,7 @@ export default function CashGamesTableRow({
   cashGame,
 }: CashGamesTableRowProps) {
   function handleRowClick() {
-    router.visit(route('cash-game', cashGame.id));
+    router.visit(route('cash-games.show', cashGame.id));
   }
 
   return (

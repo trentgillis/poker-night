@@ -11,7 +11,7 @@ export default function InProgressGameBanner({
   inProgressGame,
 }: InProgressGameBannerProps) {
   function handleClick() {
-    router.post(route('cash-game.join', { cashGame: inProgressGame }));
+    router.post(route('cash-games.join', { cashGame: inProgressGame }));
   }
 
   return (

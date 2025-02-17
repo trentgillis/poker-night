@@ -17,7 +17,7 @@ export default function RebuyForm({ setDrawerOpen }: RebuyFormProps) {
 
   function onSubmit(formData: any) {
     router.post(
-      route('cash-game.rebuy', { cashGame: page.props.cash_game }),
+      route('cash-games.rebuy', { cashGame: page.props.cash_game }),
       formData,
       {
         onSuccess: () => setDrawerOpen(false),

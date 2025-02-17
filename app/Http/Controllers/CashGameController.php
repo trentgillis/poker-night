@@ -58,17 +58,17 @@ class CashGameController extends Controller
         ]);
         CashGame::create($attributes);
 
-        return redirect(route('cash-games'))->with('success', 'Cash game added successfully.');
+        return redirect(route('cash-games.index'))->with('success', 'Cash game added successfully.');
     }
 
     public function join(Request $request, CashGame $cashGame): RedirectResponse
     {
         if ($cashGame->status !== 'in_progress') {
-            return redirect(route('cash-games'))->with('error', 'The requested game is not in progress.');
+            return redirect(route('cash-games.index'))->with('error', 'The requested game is not in progress.');
         }
 
         if ($cashGame->users->contains($request->user())) {
-            return redirect(route('cash-game', $cashGame->getAttribute('id')))->with('message', 'You have already joined this game.');
+            return redirect(route('cash-games.show', $cashGame->getAttribute('id')))->with('message', 'You have already joined this game.');
         }
 
         $cashGame->users()->attach($request->user());
@@ -77,7 +77,7 @@ class CashGameController extends Controller
             'user_id' => $request->user()->id,
             'buy_in_amt' => 10_00,
         ]);
-        return redirect(route('cash-game', $cashGame->getAttribute('id')))->with('success', 'Cash game joined successfully.');
+        return redirect(route('cash-games.show', $cashGame->getAttribute('id')))->with('success', 'Cash game joined successfully.');
     }
 
     public function rebuy(Request $request, CashGame $cashGame): RedirectResponse
@@ -92,6 +92,6 @@ class CashGameController extends Controller
             ->where('cash_game_id', '=', $cashGame->getAttribute('id'))
             ->increment('buy_in_amt', (int)$attributes['stakes']);
 
-        return redirect(route('cash-game', $cashGame))->with('success', 'Successfully rebought for $10.00');
+        return redirect(route('cash-games.show', $cashGame))->with('success', 'Successfully rebought for $10.00');
     }
 }
