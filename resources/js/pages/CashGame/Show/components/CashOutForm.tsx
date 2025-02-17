@@ -20,6 +20,7 @@ export default function CashOutForm({
   player,
   setDrawerOpen,
 }: CashOutFormProps) {
+  const errors = usePage().props.errors;
   const page = usePage();
 
   const form = useForm({
@@ -45,6 +46,7 @@ export default function CashOutForm({
         <form className="space-y-6 pt-4" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
             name="buyInAmt"
+            errors={errors}
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Buy In Amount</FormLabel>
@@ -54,6 +56,7 @@ export default function CashOutForm({
           />
           <FormField
             name="cashOutAmt"
+            errors={errors}
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Cash Out Amount</FormLabel>
