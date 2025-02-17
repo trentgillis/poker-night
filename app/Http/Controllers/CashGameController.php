@@ -133,8 +133,14 @@ class CashGameController extends Controller
         return redirect(route('cash-games.show', $cashGame))->with('success', 'Successfully cashed out');
     }
 
-    public function end(Request $request, CashGame $cashGame): RedirectResponse
+    public function end(CashGame $cashGame): RedirectResponse
     {
+        $cashGame
+            ->results()
+            ->whereIn('user_id', $cashGame->users()->pluck('id'))
+            ->update(['cash_out_amt' => 0]);
+        $cashGame->update(['status' => 'complete']);
+
         return redirect(route('cash-games.show', $cashGame))->with('success', 'Cash game ended successfully');
     }
 }
