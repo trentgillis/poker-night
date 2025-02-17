@@ -1,8 +1,9 @@
 import { Layout } from '@/components';
+import { useUser } from '@/hooks';
 import { CashGame, CashGamePlayer } from '@/types/cash-game';
 
-import { useUser } from '@/hooks';
 import CashOutDrawer from './components/CashOutDrawer';
+import EndGameDrawer from './components/EndGameDrawer';
 import GameDetails from './components/GameDetails';
 import GameHeader from './components/GameHeader';
 import GamePlayersTable from './components/GamePlayersTable';
@@ -28,12 +29,7 @@ export default function CashGameShowPage({
   return (
     <Layout>
       <div className="grow space-y-6">
-        <GameHeader
-          gameType="No Limit Hold'em"
-          gameStatus={cash_game.status}
-          stakes={cash_game.stakes}
-          datePlayed={new Date(cash_game.date)}
-        />
+        <GameHeader gameType="No Limit Hold'em" cashGame={cash_game} />
         <GameDetails
           gameType="No Limit Hold'em"
           stakes={cash_game.stakes}
@@ -45,6 +41,11 @@ export default function CashGameShowPage({
         <div className="bg-background sticky bottom-0 grid w-full grid-cols-2 gap-2 py-4">
           <CashOutDrawer player={player} />
           <RebuyDrawer />
+        </div>
+      )}
+      {user.is_admin && (
+        <div className="bg-background sticky bottom-0 w-full gap-2 pb-4">
+          <EndGameDrawer cashGame={cash_game} />
         </div>
       )}
     </Layout>

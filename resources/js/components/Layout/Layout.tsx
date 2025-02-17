@@ -30,7 +30,7 @@ export default function Layout({
   }, [flash]);
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full grow flex-col">
       <Header setMenuOpen={setMenuOpen} />
       <Nav menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <main className="mt-6 flex w-full max-w-2xl grow flex-col px-4 lg:mx-auto">

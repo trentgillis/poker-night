@@ -9,6 +9,7 @@ Route::get('/', [LeaderboardController::class, 'index'])->name('leaderboard');
 
 Route::middleware('auth')->group(function () {
     Route::post('/cash-games', [CashGameController::class, 'store'])->name('cash-games.store');
+    Route::post('/cash-games/{cashGame}/end', [CashGameController::class, 'end'])->name('cash-games.end');
     Route::post('/cash-games/{cashGame}/join', [CashGameController::class, 'join'])->name('cash-games.join');
     Route::post('/cash-games/{cashGame}/rebuy', [CashGameController::class, 'rebuy'])->name('cash-games.rebuy');
     Route::post('/cash-games/{cashGame}/cash-out', [CashGameController::class, 'cashOut'])->name('cash-games.cash-out');
