@@ -18,7 +18,7 @@ export default function InProgressGameBanner({
     <button
       type="button"
       onClick={handleClick}
-      className="border-border flex w-full items-center rounded-md border px-3 py-4"
+      className="border-border mb-6 flex w-full items-center rounded-md border px-3 py-4"
     >
       <div className="flex flex-auto flex-col items-start gap-1">
         <div className="text-sm font-semibold">Game currently in progress</div>
