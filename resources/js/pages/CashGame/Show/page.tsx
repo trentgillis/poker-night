@@ -1,6 +1,5 @@
 import { Layout } from '@/components';
 import { CashGame, CashGamePlayer } from '@/types/cash-game';
-import { usePage } from '@inertiajs/react';
 
 import { useUser } from '@/hooks';
 import CashOutDrawer from './components/CashOutDrawer';
@@ -19,11 +18,12 @@ export default function CashGameShowPage({
   players,
 }: CashGameShowPageProps) {
   const user = useUser();
-  const page = usePage();
 
   const player = players.find((player) => {
     return player.id === user.id;
   });
+
+  const playerCashedOut = !!player?.game_result.cash_out_amt;
 
   return (
     <Layout>
@@ -41,14 +41,12 @@ export default function CashGameShowPage({
         />
         <GamePlayersTable players={players} />
       </div>
-      {player &&
-        cash_game.status === 'in_progress' &&
-        page.props.user_joined_game && (
-          <div className="bg-background sticky bottom-0 grid w-full grid-cols-2 gap-2 py-4">
-            <CashOutDrawer player={player} />
-            <RebuyDrawer />
-          </div>
-        )}
+      {player && !playerCashedOut && cash_game.status === 'in_progress' && (
+        <div className="bg-background sticky bottom-0 grid w-full grid-cols-2 gap-2 py-4">
+          <CashOutDrawer player={player} />
+          <RebuyDrawer />
+        </div>
+      )}
     </Layout>
   );
 }
