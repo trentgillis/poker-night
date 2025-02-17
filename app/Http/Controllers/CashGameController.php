@@ -138,6 +138,7 @@ class CashGameController extends Controller
         $cashGame
             ->results()
             ->whereIn('user_id', $cashGame->users()->pluck('id'))
+            ->whereNull('cash_out_amt')
             ->update(['cash_out_amt' => 0]);
         $cashGame->update(['status' => 'complete']);
 
