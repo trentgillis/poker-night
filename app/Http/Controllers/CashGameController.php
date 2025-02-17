@@ -85,7 +85,7 @@ class CashGameController extends Controller
         $cashGame->results()->create([
             'cash_game_id' => $cashGame->getAttribute('id'),
             'user_id' => $request->user()->id,
-            'buy_in_amt' => $initialBuyIn, // TODO: adjust initial buy-in based on game stakes
+            'buy_in_amt' => $initialBuyIn,
         ]);
         return redirect(route('cash-games.show', $cashGame->getAttribute('id')))->with('success', 'Cash game joined successfully.');
     }
