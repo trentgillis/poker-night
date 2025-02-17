@@ -30,7 +30,10 @@ export default function CashOutForm({
     },
   });
 
-  function onSubmit(formData: any) {
+  function onSubmit(formData: { buyInAmt: string; cashOutAmt: string }) {
+    if (formData.buyInAmt === 'NaN') formData.buyInAmt = '';
+    if (formData.cashOutAmt === 'NaN') formData.cashOutAmt = '';
+
     router.post(
       route('cash-games.cash-out', { cashGame: page.props.cash_game }),
       formData,
