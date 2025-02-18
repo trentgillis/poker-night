@@ -3,10 +3,8 @@
 namespace App\Http\Middleware;
 
 use App\Models\CashGame;
-use Closure;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
-use Symfony\Component\HttpFoundation\Response;
 
 class AddInProgressGameToResponse extends Middleware
 {
