@@ -26,6 +26,7 @@ export default function UpdatePasswordForm({
 
   function onSubmit(formData: UpdatePasswordFormData) {
     router.put(route('password.update'), formData as any, {
+      preserveScroll: true,
       onSuccess: () => form.reset(),
       onError: () => {
         if (errors['password'] || errors['current_password']) {
