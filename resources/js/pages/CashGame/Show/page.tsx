@@ -43,7 +43,7 @@ export default function CashGameShowPage({
           <RebuyDrawer />
         </div>
       )}
-      {user?.is_admin && (
+      {user?.is_admin && cash_game.status === 'in_progress' && (
         <div className="bg-background sticky bottom-0 w-full gap-2 pb-4">
           <EndGameDrawer cashGame={cash_game} />
         </div>
