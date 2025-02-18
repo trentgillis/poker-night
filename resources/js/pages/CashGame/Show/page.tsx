@@ -21,7 +21,7 @@ export default function CashGameShowPage({
   const user = useUser();
 
   const player = players.find((player) => {
-    return player.id === user.id;
+    return player.id === user?.id;
   });
 
   const playerCashedOut = !!player?.game_result.cash_out_amt;
@@ -43,7 +43,7 @@ export default function CashGameShowPage({
           <RebuyDrawer />
         </div>
       )}
-      {user.is_admin && (
+      {user?.is_admin && (
         <div className="bg-background sticky bottom-0 w-full gap-2 pb-4">
           <EndGameDrawer cashGame={cash_game} />
         </div>

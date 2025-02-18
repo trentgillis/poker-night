@@ -32,7 +32,7 @@ export default function ForgotPasswordPage() {
             <h2 className="mt-6 text-center text-xl font-semibold text-zinc-100">
               Reset Password
             </h2>
-            <p className="text-sm">
+            <p className="text-white-muted text-sm">
               Enter the email address associated with your account and we'll
               send you a link to reset your password
             </p>

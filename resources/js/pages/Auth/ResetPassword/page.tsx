@@ -52,7 +52,7 @@ export default function ResetPasswordPage({
             <h2 className="mt-6 text-center text-xl font-semibold text-zinc-100">
               Reset Password
             </h2>
-            <p className="text-sm">
+            <p className="text-white-muted text-sm">
               Enter a new password below to finish resetting your password
             </p>
           </div>
