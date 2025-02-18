@@ -135,6 +135,8 @@ class CashGameController extends Controller
 
     public function end(CashGame $cashGame): RedirectResponse
     {
+        Gate::authorize('end', CashGame::class);
+
         $cashGame
             ->results()
             ->whereIn('user_id', $cashGame->users()->pluck('id'))

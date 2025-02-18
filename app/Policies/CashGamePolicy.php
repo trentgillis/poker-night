@@ -49,4 +49,11 @@ class CashGamePolicy
             ? Response::allow()
             : Response::denyAsNotFound();
     }
+
+    public function end(?User $user): Response
+    {
+        return $user?->is_admin
+            ? Response::allow()
+            : Response::denyAsNotFound();
+    }
 }
