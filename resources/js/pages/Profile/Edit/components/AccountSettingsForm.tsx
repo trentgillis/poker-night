@@ -73,7 +73,7 @@ export default function AccountSettingsForm({
               </FormItem>
             )}
           />
-          <Button className="w-full" type="submit">
+          <Button variant="secondary" className="w-full" type="submit">
             Update Profile
           </Button>
         </form>

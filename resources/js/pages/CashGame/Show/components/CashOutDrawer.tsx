@@ -24,7 +24,7 @@ export default function CashOutDrawer({ player }: CashOutDrawerProps) {
   return (
     <Drawer open={drawerOpen} onOpenChange={(isOpen) => setDrawerOpen(isOpen)}>
       <DrawerTrigger asChild>
-        <Button variant="primary" className="text-background w-full bg-white">
+        <Button variant="secondary" className="w-full">
           Cash Out
         </Button>
       </DrawerTrigger>

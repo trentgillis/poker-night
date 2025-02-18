@@ -79,7 +79,7 @@ export default function UpdatePasswordForm({
               </FormItem>
             )}
           />
-          <Button className="w-full" type="submit">
+          <Button variant="secondary" className="w-full" type="submit">
             Update Password
           </Button>
         </form>

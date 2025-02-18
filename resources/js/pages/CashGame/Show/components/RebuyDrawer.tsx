@@ -20,7 +20,7 @@ export default function RebuyDrawer() {
   return (
     <Drawer open={drawerOpen} onOpenChange={(isOpen) => setDrawerOpen(isOpen)}>
       <DrawerTrigger asChild>
-        <Button variant="primary" className="text-background w-full bg-white">
+        <Button variant="secondary" className="w-full">
           Rebuy
         </Button>
       </DrawerTrigger>
