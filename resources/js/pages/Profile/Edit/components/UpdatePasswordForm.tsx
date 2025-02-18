@@ -2,79 +2,84 @@ import { router } from '@inertiajs/react';
 import { FormProvider, useForm } from 'react-hook-form';
 
 import { Button, FormField, FormItem, FormLabel, Input } from '@/components';
-import { useUser } from '@/hooks';
 
-interface AccountSettingsFormData {
-  email: string;
-  first_name: string;
-  last_name: string;
+interface UpdatePasswordFormData {
+  current_password: string;
+  password: string;
+  password_confirmation: string;
 }
 
-interface AccountSettingsFormProps {
+interface UpdatePasswordFormProps {
   errors: Record<string, string>;
 }
 
-export default function AccountSettingsForm({
+export default function UpdatePasswordForm({
   errors,
-}: AccountSettingsFormProps) {
-  const user = useUser();
-  const form = useForm<AccountSettingsFormData>({
+}: UpdatePasswordFormProps) {
+  const form = useForm<UpdatePasswordFormData>({
     defaultValues: {
-      email: user.email,
-      first_name: user.first_name,
-      last_name: user.last_name,
+      current_password: '',
+      password: '',
+      password_confirmation: '',
     },
   });
 
-  function onSubmit(formData: AccountSettingsFormData) {
-    router.patch(route('profile.update'), formData as any);
+  function onSubmit(formData: UpdatePasswordFormData) {
+    router.put(route('password.update'), formData as any, {
+      onSuccess: () => form.reset(),
+      onError: () => {
+        if (errors['password'] || errors['current_password']) {
+          form.reset();
+        }
+      },
+    });
   }
 
   return (
     <FormProvider {...form}>
       <div className="flex flex-col gap-8 pt-8 pb-10">
         <div>
-          <h2 className="text-base/7 font-semibold">Profile Information</h2>
+          <h2 className="text-base/7 font-semibold">Update Password</h2>
           <p className="text-white-muted mt-1 text-xs/4">
-            Change the name email associated with your account
+            Change the password associated with your account
           </p>
         </div>
         <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
             control={form.control}
-            name="email"
+            name="current_password"
             errors={errors}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
-                <Input {...field} />
+                <FormLabel>Current Password</FormLabel>
+                <Input type="password" {...field} />
               </FormItem>
             )}
           />
           <FormField
             control={form.control}
-            name="first_name"
+            name="password"
             errors={errors}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>First Name</FormLabel>
-                <Input {...field} />
+                <FormLabel>New Password</FormLabel>
+                <Input type="password" {...field} />
               </FormItem>
             )}
           />
           <FormField
             control={form.control}
-            name="last_name"
+            name="password_confirmation"
             errors={errors}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Last Name</FormLabel>
-                <Input {...field} />
+                <FormLabel>Confirm Password</FormLabel>
+                <Input type="password" {...field} />
               </FormItem>
             )}
           />
           <Button className="w-full" type="submit">
-            Update Profile
+            Update Password
           </Button>
         </form>
       </div>

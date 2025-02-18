@@ -14,7 +14,7 @@ export default function Input({
 
   return (
     <>
-      <div className="relative">
+      <div className="relative z-0">
         {Icon && (
           <Icon className="absolute top-1/2 left-[8px] my-auto h-4 w-4 -translate-y-1/2 transform" />
         )}

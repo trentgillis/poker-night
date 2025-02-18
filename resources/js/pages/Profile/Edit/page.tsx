@@ -1,11 +1,12 @@
 import { Layout } from '@/components';
 import AccountSettingsForm from '@/pages/Profile/Edit/components/AccountSettingsForm';
+import UpdatePasswordForm from '@/pages/Profile/Edit/components/UpdatePasswordForm';
 
 interface ProfileEditPageProps {
   errors: Record<string, string>;
 }
 
-export default function ProfileEditPage({ errors }: ProfileEditPageProps) {
+export default function Page({ errors }: ProfileEditPageProps) {
   return (
     <Layout>
       <div className="divide-white-muted/30 divide-y">
@@ -13,6 +14,7 @@ export default function ProfileEditPage({ errors }: ProfileEditPageProps) {
           <h1 className="text-lg/7 font-semibold">Account Settings</h1>
         </div>
         <AccountSettingsForm errors={errors} />
+        <UpdatePasswordForm errors={errors} />
         <div className="grid max-w-7xl grid-cols-1 gap-x-8 gap-y-10 px-4 py-16 sm:px-6 md:grid-cols-3 lg:px-8">
           <div>
             <h2 className="text-base/7 font-semibold text-white">
