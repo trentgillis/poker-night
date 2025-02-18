@@ -1,5 +1,5 @@
 import { Transition, TransitionChild } from '@headlessui/react';
-import { X } from 'lucide-react';
+import { LogOut, Settings, X } from 'lucide-react';
 import React, { useEffect } from 'react';
 
 import { Button, Logo } from '@/components';
@@ -60,9 +60,24 @@ export default function Nav({ menuOpen, setMenuOpen }: NavProps) {
                     </li>
                     <li className="mt-auto pt-4">
                       {user ? (
-                        <div className="-mx-2 flex flex-1 flex-col gap-2">
-                          <Button variant="link" asChild>
+                        <div className="-mx-2 flex flex-1 flex-col gap-3">
+                          <Button
+                            className="flex items-center gap-2"
+                            variant="link"
+                            asChild
+                          >
+                            <Link href={route('profile.edit')}>
+                              <Settings className="h-4 w-4" />
+                              Profile Settings
+                            </Link>
+                          </Button>
+                          <Button
+                            className="flex items-center gap-2"
+                            variant="link"
+                            asChild
+                          >
                             <Link method="post" href={route('logout')}>
+                              <LogOut className="h-4 w-4" />
                               Logout
                             </Link>
                           </Button>
