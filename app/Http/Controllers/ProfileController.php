@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -21,6 +22,13 @@ class ProfileController extends Controller
         $request->user()->makeVisible(['email']);
 
         return Inertia::render('Profile/Edit');
+    }
+
+    public function show(Request $request, User $profile): Response
+    {
+        return Inertia::render('Profile/Show', [
+            'profile' => $profile,
+        ]);
     }
 
     /**
