@@ -1,7 +1,9 @@
 import { Avatar } from '@/components';
+import { router } from '@inertiajs/react';
 
 interface LeaderboardTableRowProps {
   rank: number;
+  userId: number;
   firstName: string;
   lastName: string;
   winnings: number;
@@ -10,13 +12,18 @@ interface LeaderboardTableRowProps {
 
 export default function LeaderboardTableRow({
   rank,
+  userId,
   firstName,
   lastName,
   winnings,
   gamesPlayed,
 }: LeaderboardTableRowProps) {
+  function handleClick() {
+    router.get(route('profile.show', userId));
+  }
+
   return (
-    <tr>
+    <tr onClick={handleClick}>
       <td className="px-3 py-4 text-xs font-medium whitespace-nowrap">
         #{rank}
       </td>

@@ -24,10 +24,24 @@ class ProfileController extends Controller
         return Inertia::render('Profile/Edit');
     }
 
-    public function show(Request $request, User $profile): Response
+    public function show(User $profile): Response
     {
+        $playerProfile = User::with('cashGames', 'cashGameResults')
+            ->where('id', '=', $profile['id'])
+            ->withCount('cashGames')
+            ->first();
+
+        $playerProfile['totalWinnings'] = $playerProfile['cashGameResults']
+            ->reduce(function ($carry, $game) {
+                return $carry + ($game['cash_out_amt'] - $game['buy_in_amt']);
+            }, 0);
+
+        $playerProfile['biggestWin'] = max($playerProfile['cashGameResults']->map(function ($item) {
+            return $item['cash_out_amt'] - $item['buy_in_amt'];
+        })->all());
+
         return Inertia::render('Profile/Show', [
-            'profile' => $profile,
+            'profile' => $playerProfile->makeVisible('cashGameResult', 'cash_games_count', 'totalWinnings', 'biggestWin'),
         ]);
     }
 

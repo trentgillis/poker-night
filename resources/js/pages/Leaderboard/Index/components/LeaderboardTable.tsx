@@ -38,6 +38,7 @@ export default function LeaderBoardTable({ users }: LeaderboardTableProps) {
             <LeaderboardTableRow
               key={user.id}
               rank={index + 1}
+              userId={user.id}
               firstName={user.first_name}
               lastName={user.last_name}
               winnings={user.total_winnings}
