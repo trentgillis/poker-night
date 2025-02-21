@@ -1,5 +1,6 @@
 import { Avatar } from '@/components';
 import { CashGamePlayer } from '@/types/cash-game';
+import { router } from '@inertiajs/react';
 
 interface GamePlayersTableRowProps {
   player: CashGamePlayer;
@@ -11,8 +12,12 @@ export default function GamePlayersTableRow({
   const playerWinnings =
     (player.game_result.cash_out_amt ?? 0) - player.game_result.buy_in_amt;
 
+  function handleClick() {
+    router.visit(route('profile.show', player.id));
+  }
+
   return (
-    <tr>
+    <tr onClick={handleClick}>
       <td className="px-1.5 py-4 text-center text-xs font-medium whitespace-nowrap">
         <div className="flex items-center gap-2">
           <Avatar

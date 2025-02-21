@@ -1,5 +1,6 @@
 import { CashGame } from '@/types/cash-game';
 import { getStakesString } from '@/util';
+import { router } from '@inertiajs/react';
 
 interface ProfileGamesTableRowProps {
   cashGame: CashGame;
@@ -12,7 +13,9 @@ export default function ProfileGamesTableRow({
     (cashGame.results?.[0].cash_out_amt ?? 0) -
     (cashGame.results?.[0].buy_in_amt ?? 0);
 
-  function handleRowClick() {}
+  function handleRowClick() {
+    router.visit(route('cash-games.show', cashGame.id));
+  }
 
   return (
     <tr onClick={handleRowClick}>
