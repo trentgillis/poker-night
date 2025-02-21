@@ -3,6 +3,7 @@ export interface CashGame {
   date: string;
   status: CashGameStatus;
   stakes: CashGameStakes;
+  results?: CashGameResult[];
 }
 
 export interface CashGamePlayer {
