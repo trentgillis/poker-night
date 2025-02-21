@@ -26,7 +26,9 @@ export default function CashGamesTableRow({
       <td className="px-1.5 py-4 text-left text-xs whitespace-nowrap">
         {getStakesString(cashGame.stakes, true)}
       </td>
-      <td className="px-1.5 py-4 text-center text-xs whitespace-nowrap">10</td>
+      <td className="px-1.5 py-4 text-center text-xs whitespace-nowrap">
+        {cashGame.users?.length ?? 0}
+      </td>
     </tr>
   );
 }

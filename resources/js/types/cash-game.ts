@@ -1,8 +1,11 @@
+import { User } from '@/types/index';
+
 export interface CashGame {
   id: number;
   date: string;
   status: CashGameStatus;
   stakes: CashGameStakes;
+  users?: User[];
   results?: CashGameResult[];
 }
 
