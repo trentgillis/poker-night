@@ -26,7 +26,13 @@ class ProfileController extends Controller
 
     public function show(User $profile): Response
     {
-        $playerProfile = User::with('cashGames', 'cashGameResults')
+        $playerProfile = User::query()
+            ->with([
+                'cashGameResults',
+                'cashGames' => function ($query) {
+                    $query->with('results');
+                }
+            ])
             ->where('id', '=', $profile['id'])
             ->withCount('cashGames')
             ->first();
@@ -41,7 +47,7 @@ class ProfileController extends Controller
         })->all());
 
         return Inertia::render('Profile/Show', [
-            'profile' => $playerProfile->makeVisible('cashGameResult', 'cash_games_count', 'totalWinnings', 'biggestWin'),
+            'profile' => $playerProfile->makeVisible('cashGames', 'cash_games_count', 'totalWinnings', 'biggestWin'),
         ]);
     }
 

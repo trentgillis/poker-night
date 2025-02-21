@@ -1,7 +1,8 @@
 import { Avatar, Layout } from '@/components';
 import ProfileDetails from '@/pages/Profile/Show/components/ProfileDetails';
+import ProfileGamesTable from '@/pages/Profile/Show/components/ProfileGamesTable';
 import { User } from '@/types';
-import { CashGameResult } from '@/types/cash-game';
+import { CashGame, CashGameResult } from '@/types/cash-game';
 
 interface ShowProfilePageProps {
   profile: User & {
@@ -9,6 +10,7 @@ interface ShowProfilePageProps {
     biggestWin: number;
     cash_games_count: number;
     cash_game_results: CashGameResult[];
+    cash_games: CashGame[];
   };
 }
 
@@ -26,6 +28,7 @@ export default function ShowProfilePage({ profile }: ShowProfilePageProps) {
         biggestWin={profile.biggestWin}
         cashGamesCount={profile.cash_games_count}
       />
+      <ProfileGamesTable cashGames={profile.cash_games} />
     </Layout>
   );
 }
