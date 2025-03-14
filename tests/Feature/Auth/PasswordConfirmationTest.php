@@ -1,13 +1,16 @@
 <?php
 
 use App\Models\User;
+use Inertia\Testing\AssertableInertia;
 
 test('confirm password screen can be rendered', function () {
     $user = User::factory()->create();
 
     $response = $this->actingAs($user)->get('/confirm-password');
 
-    $response->assertStatus(200);
+    $response->assertInertia(function (AssertableInertia $page) {
+        $page->component('Auth/ConfirmPassword', false);
+    });
 });
 
 test('password can be confirmed', function () {

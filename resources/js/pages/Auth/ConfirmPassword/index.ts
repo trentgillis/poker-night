@@ -1,1 +1,1 @@
-export { default } from './ConfirmPasswordPage';
+export { default } from './page';

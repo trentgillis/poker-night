@@ -1,15 +1,18 @@
 <?php
 
 use App\Models\User;
+use Inertia\Testing\AssertableInertia;
 
 test('profile page is displayed', function () {
     $user = User::factory()->create();
 
     $response = $this
         ->actingAs($user)
-        ->get('/profile');
+        ->get('/profile/edit');
 
-    $response->assertOk();
+    $response->assertInertia(function (AssertableInertia $pgae) {
+        $pgae->component('Profile/Edit', false);
+    });
 });
 
 test('profile information can be updated', function () {
@@ -18,17 +21,19 @@ test('profile information can be updated', function () {
     $response = $this
         ->actingAs($user)
         ->patch('/profile', [
-            'name' => 'Test User',
+            'first_name' => 'Test',
+            'last_name' => 'User',
             'email' => 'test@example.com',
         ]);
 
     $response
         ->assertSessionHasNoErrors()
-        ->assertRedirect('/profile');
+        ->assertRedirect('/profile/edit');
 
     $user->refresh();
 
-    $this->assertSame('Test User', $user->name);
+    $this->assertSame('Test', $user->first_name);
+    $this->assertSame('User', $user->last_name);
     $this->assertSame('test@example.com', $user->email);
     $this->assertNull($user->email_verified_at);
 });
@@ -39,13 +44,14 @@ test('email verification status is unchanged when the email address is unchanged
     $response = $this
         ->actingAs($user)
         ->patch('/profile', [
-            'name' => 'Test User',
+            'first_name' => 'Test',
+            'last_name' => 'User',
             'email' => $user->email,
         ]);
 
     $response
         ->assertSessionHasNoErrors()
-        ->assertRedirect('/profile');
+        ->assertRedirect('/profile/edit');
 
     $this->assertNotNull($user->refresh()->email_verified_at);
 });
@@ -56,7 +62,7 @@ test('user can delete their account', function () {
     $response = $this
         ->actingAs($user)
         ->delete('/profile', [
-            'password' => 'password',
+            'delete_confirm_password' => 'password',
         ]);
 
     $response
@@ -74,11 +80,11 @@ test('correct password must be provided to delete account', function () {
         ->actingAs($user)
         ->from('/profile')
         ->delete('/profile', [
-            'password' => 'wrong-password',
+            'delete_confirm_password' => 'wrong-password',
         ]);
 
     $response
-        ->assertSessionHasErrors('password')
+        ->assertSessionHasErrors('delete_confirm_password')
         ->assertRedirect('/profile');
 
     $this->assertNotNull($user->fresh());

@@ -1,11 +1,14 @@
 <?php
 
 use App\Models\User;
+use Inertia\Testing\AssertableInertia;
 
 test('login screen can be rendered', function () {
     $response = $this->get('/login');
 
-    $response->assertStatus(200);
+    $response->assertInertia(function (AssertableInertia $page) {
+        return $page->component('Auth/Login', false);
+    });
 });
 
 test('users can authenticate using the login screen', function () {
@@ -17,7 +20,7 @@ test('users can authenticate using the login screen', function () {
     ]);
 
     $this->assertAuthenticated();
-    $response->assertRedirect(route('dashboard', absolute: false));
+    $response->assertRedirect(route('leaderboard', absolute: false));
 });
 
 test('users can not authenticate with invalid password', function () {
