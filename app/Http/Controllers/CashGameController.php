@@ -14,13 +14,11 @@ class CashGameController extends Controller
 {
     public function index(): Response
     {
-        $cashGames = CashGame::query()
-            ->with('users')
-            ->orderBy('date', 'desc')
-            ->get();
+        $cashGames = CashGame::query()->with('users')->orderBy('date', 'desc')
+            ->get()->makeVisible(['users']);
 
         return Inertia::render('CashGame/Index', [
-            'cash_games' => $cashGames->makeVisible(['users']),
+            'cash_games' => $cashGames,
         ]);
     }
 

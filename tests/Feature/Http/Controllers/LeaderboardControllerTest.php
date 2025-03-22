@@ -5,7 +5,7 @@ use App\Models\CashGameResult;
 use App\Models\User;
 use Inertia\Testing\AssertableInertia;
 
-test('it should render the leaderboard with users ordered by total winnings', function () {
+test('renders the leaderboard with users ordered by total winnings', function () {
     $game = CashGame::factory()->create();
     $users = User::factory()->count(3)->create();
     foreach ($users as $user) {
