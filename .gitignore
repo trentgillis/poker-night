@@ -6,6 +6,7 @@
 /storage/*.key
 /storage/pail
 /vendor
+Caddyfile
 .env
 .env.backup
 .env.production
