@@ -73,11 +73,28 @@ test('non-admins cannot create cash games', function () {
 });
 
 test('admins can end cash games', function () {
+    $cashGame = CashGame::factory()->create(['status' => 'in_progress']);
+    $user = User::factory()->asAdmin()->create();
 
+    $response = $this->actingAs($user)->post(route('cash-games.end', $cashGame));
+    $response->assertSessionDoesntHaveErrors()
+        ->assertRedirect(route('cash-games.show', $cashGame));
+});
+
+test('admins cannot end cash games that are not in progress', function () {
+    $cashGame = CashGame::factory()->create(['status' => 'complete']);
+    $user = User::factory()->asAdmin()->create();
+
+    $response = $this->actingAs($user)->post(route('cash-games.end', $cashGame));
+    $response->assertSessionHasErrors();
 });
 
 test('non-admins cannot end cash games', function () {
+    $cashGame = CashGame::factory()->create(['status' => 'in_progress']);
+    $user = User::factory()->create();
 
+    $response = $this->actingAs($user)->post(route('cash-games.end', $cashGame));
+    $response->assertNotFound();
 });
 
 test('users can join in progress games', function () {

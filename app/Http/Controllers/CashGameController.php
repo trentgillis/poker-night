@@ -138,6 +138,11 @@ class CashGameController extends Controller
     {
         Gate::authorize('end', CashGame::class);
 
+
+        if ($cashGame->status !== 'in_progress') {
+            throw ValidationException::withMessages(['root' => 'Cash game is not in progress.']);
+        }
+
         $cashGame
             ->results()
             ->whereIn('user_id', $cashGame->users()->pluck('id'))
