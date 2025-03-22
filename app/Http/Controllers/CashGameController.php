@@ -69,7 +69,7 @@ class CashGameController extends Controller
         }
 
         if ($cashGame->users->contains($request->user())) {
-            return redirect(route('cash-games.show', $cashGame->getAttribute('id')))->with('message', 'You have already joined this game.');
+            return redirect(route('cash-games.show', $cashGame))->with('message', 'You have already joined this game.');
         }
 
         $initialBuyIn = 10_00;

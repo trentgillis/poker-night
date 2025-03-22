@@ -98,11 +98,23 @@ test('non-admins cannot end cash games', function () {
 });
 
 test('users can join in progress games', function () {
+    $cashGame = CashGame::factory()->create(['status' => 'in_progress']);
+    $user = User::factory()->create();
 
+    $response = $this->actingAs($user)->post(route('cash-games.join', $cashGame));
+    $this->assertContains($user->id, $cashGame->users->map(fn(User $user) => $user->id)->values());
+    $response->assertSessionDoesntHaveErrors()
+        ->assertRedirect(route('cash-games.show', $cashGame));
 });
 
 test('users cannot join games that are not in progress', function () {
+    $cashGame = CashGame::factory()->create(['status' => 'complete']);
+    $user = User::factory()->create();
 
+    $response = $this->actingAs($user)->post(route('cash-games.join', $cashGame));
+    $this->assertNotContains($user->id, $cashGame->users->map(fn(User $user) => $user->id)->values());
+    $response->assertSessionHas('error')
+        ->assertRedirect(route('cash-games.index'));
 });
 
 test('users can rebuy in a game they have joined', function () {
