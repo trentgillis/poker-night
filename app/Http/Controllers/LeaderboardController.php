@@ -13,13 +13,9 @@ class LeaderboardController extends Controller
         $users = User::with('cashGames', 'cashGameResults')
             ->withCount('cashGames')
             ->get()
-            ->makeVisible(['cash_games_count']);
+            ->makeVisible(['cash_games_count', 'total_winnings']);
 
-        $users = $users->map(function ($user) {
-            $user['total_winnings'] = $user->totalWinnings;
-
-            return $user->makeVisible(['total_winnings']);
-        })->sortByDesc('total_winnings')->values()->all();
+        $users = $users->sortByDesc(fn(User $user) => $user->total_winnings)->values();
 
         return Inertia::render('Leaderboard/Index', [
             'users' => $users
