@@ -49,7 +49,7 @@ test('admins can create cash games', function () {
     $response->assertSessionDoesntHaveErrors()->assertRedirect(route('cash-games.index'));
 });
 
-test('admin cannot create a cash game if one is already in progress', function () {
+test('admins cannot create a cash game if one is already in progress', function () {
     CashGame::factory()->create(['status' => 'in_progress']);
     $user = User::factory()->asAdmin()->create();
 
@@ -148,9 +148,52 @@ test('users cannot rebuy if they have not joined the game', function () {
 });
 
 test('users can cash out if they have joined the game', function () {
+    $user = User::factory()->create();
+    $cashGame = CashGame::factory()->create();
+    $cashGame->users()->attach($user);
+    $cashGameResult = CashGameResult::factory()->create([
+        'cash_game_id' => $cashGame->id,
+        'user_id' => $user->id,
+        'buy_in_amt' => 10_00,
+        'cash_out_amt' => null,
+    ]);
 
+    $response = $this->actingAs($user)->post(route('cash-games.cash-out', $cashGame), [
+        'buyInAmt' => '1000',
+        'cashOutAmt' => '2000',
+    ]);
+    $response->assertSessionHas('success')
+        ->assertRedirect(route('cash-games.show', $cashGame));
+    $this->assertEquals($cashGameResult->fresh()->buy_in_amt, 10_00);
+    $this->assertEquals($cashGameResult->fresh()->cash_out_amt, 20_00);
 });
 
 test('users cannot cash out if they have not joined the game', function () {
+    $user = User::factory()->create();
+    $cashGame = CashGame::factory()->create();
 
+    $response = $this->actingAs($user)->post(route('cash-games.cash-out', $cashGame), [
+        'buyInAmt' => '1000',
+        'cashOutAmt' => '2000',
+    ]);
+    $response->assertSessionHasErrors();
+});
+
+test('users cannot cash out of a game more than once', function () {
+    $user = User::factory()->create();
+    $cashGame = CashGame::factory()->create();
+    $cashGame->users()->attach($user);
+    CashGameResult::factory()->create([
+        'cash_game_id' => $cashGame->id,
+        'user_id' => $user->id,
+        'buy_in_amt' => 10_00,
+        'cash_out_amt' => 20_00,
+    ]);
+
+    $response = $this->actingAs($user)->post(route('cash-games.cash-out', $cashGame), [
+        'buyInAmt' => '1000',
+        'cashOutAmt' => '2000',
+    ]);
+    $response->assertSessionHas('message')
+        ->assertRedirect(route('cash-games.show', $cashGame));
 });

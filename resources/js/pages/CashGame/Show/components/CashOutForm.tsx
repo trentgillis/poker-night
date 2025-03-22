@@ -36,7 +36,10 @@ export default function CashOutForm({
 
     router.post(
       route('cash-games.cash-out', { cashGame: page.props.cash_game }),
-      formData,
+      {
+        buyInAmt: parseFloat(formData.buyInAmt) * 100,
+        cashOutAmt: parseFloat(formData.cashOutAmt) * 100,
+      },
       {
         onSuccess: () => setDrawerOpen(false),
       },
