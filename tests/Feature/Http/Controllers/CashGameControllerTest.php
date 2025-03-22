@@ -20,7 +20,19 @@ test('renders the cash game list page', function () {
 });
 
 test('renders the cash game show page', function () {
+    $cashGameId = 1;
+    CashGame::factory()->create(['id' => $cashGameId]);
 
+    $response = $this->get(route('cash-games.show', $cashGameId));
+    $response->assertInertia(function (AssertableInertia $page) {
+        return $page->component('CashGame/Show', false)
+            ->has('cash_game', fn(AssertableInertia $page) => $page
+                ->has('id')
+                ->has('date')
+                ->has('stakes')
+                ->has('status'))
+            ->has('players');
+    });
 });
 
 test('admins can create cash games', function () {
