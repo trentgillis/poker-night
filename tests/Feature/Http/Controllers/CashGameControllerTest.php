@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\CashGame;
+use App\Models\User;
+use Illuminate\Support\Facades\Date;
 use Inertia\Testing\AssertableInertia;
 
 test('renders the cash game list page', function () {
@@ -36,10 +38,37 @@ test('renders the cash game show page', function () {
 });
 
 test('admins can create cash games', function () {
+    $user = User::factory()->asAdmin()->create();
 
+    $response = $this->actingAs($user)->post(route('cash-games.store'), [
+        'stakes' => '10NL',
+        'status' => 'in_progress',
+        'date' => Date::now()->toDateString()
+    ]);
+    $response->assertSessionDoesntHaveErrors()->assertRedirect(route('cash-games.index'));
+});
+
+test('admin cannot create a cash game if one is already in progress', function () {
+    CashGame::factory()->create(['status' => 'in_progress']);
+    $user = User::factory()->asAdmin()->create();
+
+    $response = $this->actingAs($user)->post(route('cash-games.store'), [
+        'stakes' => '10NL',
+        'status' => 'in_progress',
+        'date' => Date::now()->toDateString()
+    ]);
+    $response->assertSessionHasErrors();
 });
 
 test('non-admins cannot create cash games', function () {
+    $user = User::factory()->create();
+
+    $response = $this->actingAs($user)->post(route('cash-games.store'), [
+        'stakes' => '10NL',
+        'status' => 'in_progress',
+        'date' => Date::now()->toDateString()
+    ]);
+    $response->assertNotFound();
 
 });
 
