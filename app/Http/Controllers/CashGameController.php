@@ -93,6 +93,10 @@ class CashGameController extends Controller
 
     public function rebuy(Request $request, CashGame $cashGame): RedirectResponse
     {
+        if (!$cashGame->users->contains($request->user())) {
+            throw ValidationException::withMessages(['error' => 'You are not a member of this game.']);
+        }
+
         $attributes = $request->validate([
             'stakes' => ['required', 'string'],
         ]);
@@ -100,14 +104,20 @@ class CashGameController extends Controller
         $request
             ->user()
             ->cashGameResults()
-            ->where('cash_game_id', '=', $cashGame->getAttribute('id'))
+            ->where('cash_game_id', $cashGame->getAttribute('id'))
             ->increment('buy_in_amt', (int)$attributes['stakes']);
+
+        dump($request->user()->cashGameResults()->where('cash_game_id', $cashGame->id)->get());
 
         return redirect(route('cash-games.show', $cashGame))->with('success', 'Successfully rebought for $10.00');
     }
 
     public function cashOut(Request $request, CashGame $cashGame): RedirectResponse
     {
+        if (!$cashGame->users->contains($request->user())) {
+            throw ValidationException::withMessages(['error' => 'You are not a member of this game.']);
+        }
+
         $attributes = $request->validate([
             'buyInAmt' => ['required', 'string'],
             'cashOutAmt' => ['required', 'string'],

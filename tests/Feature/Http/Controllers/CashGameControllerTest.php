@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\CashGame;
+use App\Models\CashGameResult;
 use App\Models\User;
 use Illuminate\Support\Facades\Date;
 use Inertia\Testing\AssertableInertia;
@@ -117,14 +118,39 @@ test('users cannot join games that are not in progress', function () {
         ->assertRedirect(route('cash-games.index'));
 });
 
-test('users can rebuy in a game they have joined', function () {
+test('users can rebuy in a game they have joined the game', function () {
+    $user = User::factory()->create();
+    $cashGame = CashGame::factory()->create();
+    $cashGame->users()->attach($user);
+    $cashGameResult = CashGameResult::factory()->create([
+        'cash_game_id' => $cashGame->id,
+        'user_id' => $user->id,
+        'buy_in_amt' => 10_00,
+        'cash_out_amt' => 0,
+    ]);
 
+    $response = $this->actingAs($user)->post(route('cash-games.rebuy', $cashGame), [
+        'stakes' => '1500',
+    ]);
+    $response->assertSessionHas('success')
+        ->assertRedirect(route('cash-games.show', $cashGame));
+    $this->assertEquals($cashGameResult->fresh()->buy_in_amt, 25_00);
 });
 
 test('users cannot rebuy if they have not joined the game', function () {
+    $user = User::factory()->create();
+    $cashGame = CashGame::factory()->create();
+
+    $response = $this->actingAs($user)->post(route('cash-games.rebuy', $cashGame), [
+        'stakes' => '1500',
+    ]);
+    $response->assertSessionHasErrors();
+});
+
+test('users can cash out if they have joined the game', function () {
 
 });
 
-test('users can successfully cash out', function () {
+test('users cannot cash out if they have not joined the game', function () {
 
 });
