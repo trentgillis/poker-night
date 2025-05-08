@@ -37,14 +37,16 @@ class ProfileController extends Controller
             ->withCount('cashGames')
             ->first();
 
-        $playerProfile['totalWinnings'] = $playerProfile['cashGameResults']
+        $cashGameResults = $playerProfile['cashGameResults'];
+
+        $playerProfile['totalWinnings'] = count($cashGameResults) > 0 ? $playerProfile['cashGameResults']
             ->reduce(function ($carry, $game) {
                 return $carry + ($game['cash_out_amt'] - $game['buy_in_amt']);
-            }, 0);
+            }, 0) : 0;
 
-        $playerProfile['biggestWin'] = max($playerProfile['cashGameResults']->map(function ($item) {
+        $playerProfile['biggestWin'] = count($cashGameResults) > 0 ? max($playerProfile['cashGameResults']->map(function ($item) {
             return $item['cash_out_amt'] - $item['buy_in_amt'];
-        })->all());
+        })->all()) : [];
 
         return Inertia::render('Profile/Show', [
             'profile' => $playerProfile->makeVisible('cashGames', 'cash_games_count', 'totalWinnings', 'biggestWin'),
